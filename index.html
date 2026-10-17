@@ -1,0 +1,2438 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="description" content="Swiftt Cadeaux — cadeaux numériques personnalisés créés en Haïti par Andy Swiftt : cadeau interactif, calendrier surprise et carte collective, à offrir par QR code ou par lien." />
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Swiftt Cadeaux">
+    <meta property="og:title" content="Swiftt Cadeaux — Une surprise qu'on n'oublie pas">
+    <meta property="og:description" content="Cadeaux numériques personnalisés créés en Haïti : cadeau interactif, calendrier surprise et carte collective.">
+    <meta property="og:image" content="https://swiftcadeau.netlify.app/assets/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://swiftcadeau.netlify.app/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Swiftt Cadeaux — Une surprise qu'on n'oublie pas">
+    <meta name="twitter:description" content="Cadeaux numériques personnalisés créés en Haïti : cadeau interactif, calendrier surprise et carte collective.">
+    <meta name="twitter:image" content="https://swiftcadeau.netlify.app/assets/og-image.jpg">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23f0567a'/%3E%3Cstop offset='1' stop-color='%237b2d8b'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3Cpath d='M32 50s-13.5-8.6-13.5-18A7.6 7.6 0 0 1 32 27a7.6 7.6 0 0 1 13.5 5c0 9.4-13.5 18-13.5 18z' fill='%23fff'/%3E%3C/svg%3E" />
+    <title>Swiftt Cadeaux — Une surprise qu'on n'oublie pas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,650;1,9..144,500;1,9..144,650&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Caveat:wght@600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #faf1e8;
+        --bg-soft: #f5e7da;
+        --surface: #fffaf5;
+        --surface-2: #ffffff;
+        --ink: #40222f;
+        --ink-soft: #7a5a68;
+        --ink-faint: #a4838f;
+        --line: #ecd9cb;
+        --rose: #e0447c;
+        --rose-deep: #c22a63;
+        --plum: #7b2d8b;
+        --plum-deep: #5c1f6e;
+        --grad: linear-gradient(120deg, #f0567a 0%, #c22a7e 48%, #7b2d8b 100%);
+        --gold: #e9a13b;
+        --shadow: 0 18px 45px rgba(123, 45, 139, 0.14);
+        --shadow-sm: 0 8px 24px rgba(64, 34, 47, 0.10);
+        --radius: 22px;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #221118;
+          --bg-soft: #2c1620;
+          --surface: #2e1824;
+          --surface-2: #38202e;
+          --ink: #fbeef2;
+          --ink-soft: #dcb7c4;
+          --ink-faint: #b28e9d;
+          --line: #4a2a3a;
+          --shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
+          --shadow-sm: 0 8px 24px rgba(0, 0, 0, 0.35);
+        }
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Nunito Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+        font-size: 17px;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+      img { max-width: 100%; display: block; }
+      a { color: inherit; }
+      h1, h2, h3 { font-family: "Fraunces", Georgia, serif; font-weight: 650; line-height: 1.12; margin: 0; }
+      .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+      .grad-text {
+        background: var(--grad);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        font-style: italic;
+      }
+      .eyebrow {
+        font-size: 0.78rem; font-weight: 800; letter-spacing: 0.22em;
+        text-transform: uppercase; color: var(--rose-deep); margin: 0 0 14px;
+      }
+      @media (prefers-color-scheme: dark) { .eyebrow { color: #f08bb0; } }
+
+      /* ---------- Header ---------- */
+      header.site {
+        position: sticky; top: 0; z-index: 50;
+        background: color-mix(in srgb, var(--bg) 88%, transparent);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--line);
+      }
+      .nav {
+        display: flex; align-items: center; gap: 18px;
+        padding: 12px 0;
+      }
+      .brand { display: flex; align-items: center; gap: 11px; text-decoration: none; margin-right: auto; }
+      .brand .logo-badge { width: 44px; height: 44px; flex: none; filter: drop-shadow(0 6px 14px rgba(194, 42, 126, 0.35)); }
+      .brand-name { font-family: "Fraunces", Georgia, serif; font-size: 1.42rem; font-weight: 650; line-height: 1; }
+      .brand-name .c2 { color: var(--rose-deep); }
+      @media (prefers-color-scheme: dark) { .brand-name .c2 { color: #f08bb0; } }
+      .brand-sub { font-size: 0.68rem; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); margin-top: 3px; }
+      .nav-links { display: none; gap: 26px; font-weight: 700; font-size: 0.95rem; }
+      .nav-links a { text-decoration: none; color: var(--ink-soft); }
+      .nav-links a:hover { color: var(--rose-deep); }
+      @media (min-width: 860px) { .nav-links { display: flex; } }
+
+      .btn {
+        display: inline-flex; align-items: center; gap: 9px;
+        font-family: inherit; font-weight: 800; font-size: 1rem;
+        border: none; cursor: pointer; text-decoration: none;
+        padding: 14px 26px; border-radius: 999px;
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
+      }
+      .btn:active { transform: scale(0.97); }
+      .btn-grad { background: var(--grad); color: #fff; box-shadow: 0 12px 28px rgba(194, 42, 126, 0.35); }
+      .btn-grad:hover { transform: translateY(-2px); box-shadow: 0 16px 34px rgba(194, 42, 126, 0.42); }
+      .btn-ghost {
+        background: var(--surface-2); color: var(--plum);
+        border: 1.5px solid var(--line);
+      }
+      @media (prefers-color-scheme: dark) { .btn-ghost { color: #eec9ff; } }
+      .btn-ghost:hover { border-color: var(--rose); color: var(--rose-deep); }
+      .btn-sm { padding: 10px 20px; font-size: 0.92rem; }
+
+      /* ---------- Hero ---------- */
+      .hero { padding: 44px 0 30px; position: relative; }
+      .hero-grid { display: grid; gap: 44px; align-items: center; }
+      @media (min-width: 940px) { .hero-grid { grid-template-columns: 1.05fr 0.95fr; gap: 30px; } }
+      .pill-link {
+        display: inline-flex; align-items: center; gap: 8px;
+        background: var(--grad); color: #fff; font-weight: 800; font-size: 0.88rem;
+        padding: 8px 18px; border-radius: 999px; text-decoration: none;
+        box-shadow: var(--shadow-sm);
+      }
+      .hero-note {
+        display: inline-flex; align-items: center; gap: 9px;
+        background: var(--surface-2); border: 1px solid var(--line);
+        border-radius: 999px; padding: 8px 16px; margin: 14px 0 26px;
+        font-size: 0.9rem; font-weight: 700; color: var(--ink-soft);
+        box-shadow: var(--shadow-sm);
+      }
+      .hero-note svg { flex: none; }
+      .hero h1 { font-size: clamp(2.5rem, 8.5vw, 4.1rem); letter-spacing: -0.01em; }
+      .hero p.lede { font-size: 1.13rem; color: var(--ink-soft); margin: 22px 0 30px; max-width: 34em; }
+      .hero p.lede strong { color: var(--ink); }
+      .hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; }
+      .trust { list-style: none; margin: 26px 0 0; padding: 0; display: grid; gap: 9px; font-size: 0.94rem; color: var(--ink-soft); font-weight: 600; }
+      .trust li { display: flex; gap: 10px; align-items: flex-start; }
+      .trust svg { flex: none; margin-top: 3px; }
+
+      /* ---------- Phone + tabs ---------- */
+      .showcase { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+      .tabs {
+        display: flex; background: var(--surface-2); border: 1px solid var(--line);
+        border-radius: 18px; padding: 6px; gap: 4px; box-shadow: var(--shadow-sm);
+        width: 100%; max-width: 430px;
+      }
+      .tab {
+        flex: 1; border: none; background: transparent; cursor: pointer;
+        font-family: inherit; font-weight: 800; font-size: 0.82rem; line-height: 1.25;
+        color: var(--ink-soft); border-radius: 13px; padding: 10px 4px;
+        display: flex; flex-direction: column; align-items: center; gap: 5px;
+        transition: background 0.2s, color 0.2s;
+      }
+      .tab[aria-selected="true"] { background: var(--plum); color: #fff; box-shadow: 0 8px 18px rgba(123, 45, 139, 0.35); }
+      .phone {
+        width: min(330px, 88vw); aspect-ratio: 330 / 600;
+        background: #17101a; border-radius: 44px; padding: 11px;
+        box-shadow: 0 34px 70px rgba(64, 20, 60, 0.35);
+      }
+      .phone-screen {
+        background: var(--bg); border-radius: 35px; height: 100%;
+        overflow-y: auto; overflow-x: hidden; position: relative;
+        scrollbar-width: none;
+      }
+      .phone-screen::-webkit-scrollbar { display: none; }
+      .phone-notch {
+        position: sticky; top: 10px; z-index: 5; margin: 0 auto;
+        width: 96px; height: 22px; background: #17101a; border-radius: 999px;
+      }
+      .screen { padding: 6px 18px 24px; display: none; }
+      .screen.active { display: block; animation: fadeUp 0.45s ease both; }
+      @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+      .screen .mini-eyebrow { text-align: center; font-size: 0.62rem; letter-spacing: 0.24em; font-weight: 800; color: var(--ink-faint); text-transform: uppercase; margin: 10px 0 6px; }
+      .screen h3 { text-align: center; font-size: 1.45rem; margin-bottom: 12px; }
+      .letter-card {
+        background: var(--surface-2); border: 1px solid var(--line); border-radius: 14px;
+        padding: 16px; font-size: 0.86rem; color: var(--ink-soft); box-shadow: var(--shadow-sm);
+      }
+      .letter-card .sign { font-family: "Caveat", cursive; font-size: 1.3rem; color: var(--rose-deep); display: block; margin-top: 8px; }
+      .polaroid {
+        background: #fff; padding: 9px 9px 6px; border-radius: 6px;
+        box-shadow: 0 14px 30px rgba(64, 34, 47, 0.22);
+        transform: rotate(-3deg); width: 74%; margin: -16px 0 0 6px; position: relative; z-index: 2;
+      }
+      .polaroid img { border-radius: 3px; aspect-ratio: 4 / 4.4; object-fit: cover; width: 100%; }
+      .polaroid figcaption { font-family: "Caveat", cursive; text-align: center; font-size: 1.15rem; color: #5c4350; padding: 5px 0 2px; }
+      .screen-photo { border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-sm); margin-bottom: 14px; }
+      .screen-photo img { width: 100%; aspect-ratio: 4 / 3.1; object-fit: cover; }
+      .cal-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 6px 0 14px; }
+      .cal-day {
+        aspect-ratio: 1; border-radius: 12px; border: 1.5px dashed var(--rose);
+        background: var(--surface-2); color: var(--rose-deep);
+        font-family: "Fraunces", serif; font-weight: 650; font-size: 1.05rem;
+        cursor: pointer; display: flex; align-items: center; justify-content: center;
+        transition: transform 0.15s, background 0.2s;
+      }
+      .cal-day:hover { transform: translateY(-2px); }
+      .cal-day.opened { background: var(--grad); color: #fff; border-style: solid; border-color: transparent; font-size: 0.95rem; }
+      .cal-msg {
+        background: var(--surface-2); border: 1px solid var(--line); border-radius: 14px;
+        padding: 14px 16px; font-size: 0.88rem; color: var(--ink-soft); min-height: 74px;
+        box-shadow: var(--shadow-sm);
+      }
+      .cal-msg strong { color: var(--ink); display: block; margin-bottom: 3px; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; }
+      .note-bubble {
+        background: var(--surface-2); border: 1px solid var(--line); border-radius: 16px 16px 16px 4px;
+        padding: 11px 14px; font-size: 0.86rem; color: var(--ink-soft); margin-bottom: 10px; box-shadow: var(--shadow-sm);
+      }
+      .note-bubble b { color: var(--ink); }
+      .note-bubble .from { display: block; margin-top: 4px; font-family: "Caveat", cursive; font-size: 1.1rem; color: var(--rose-deep); }
+
+      /* ---------- Sections ---------- */
+      section.block { padding: 64px 0; }
+      section.block.alt { background: var(--bg-soft); }
+      .sec-head { max-width: 640px; margin-bottom: 38px; }
+      .sec-head.center { margin-left: auto; margin-right: auto; text-align: center; }
+      .sec-head h2 { font-size: clamp(1.9rem, 5.5vw, 2.7rem); }
+      .sec-head p { color: var(--ink-soft); margin: 14px 0 0; }
+
+      /* Demo */
+      .demo-stage {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 28px;
+        box-shadow: var(--shadow); padding: 30px 22px 36px; text-align: center;
+        position: relative; overflow: hidden; max-width: 760px; margin: 0 auto;
+      }
+      .qr-chip {
+        display: inline-flex; align-items: center; gap: 14px; text-align: left;
+        background: var(--surface-2); border: 1px solid var(--line); border-radius: 16px;
+        padding: 12px 18px 12px 12px; box-shadow: var(--shadow-sm); margin-bottom: 30px;
+      }
+      .qr-chip p { margin: 0; font-size: 0.88rem; font-weight: 700; color: var(--ink-soft); line-height: 1.4; }
+      .qr-chip p b { color: var(--ink); }
+      .gift-box { position: relative; width: 190px; height: 170px; margin: 26px auto 8px; }
+      .gift-body {
+        position: absolute; bottom: 0; left: 15px; width: 160px; height: 112px;
+        background: var(--grad); border-radius: 10px;
+      }
+      .gift-body::after {
+        content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 26px;
+        transform: translateX(-50%); background: rgba(255, 255, 255, 0.35);
+      }
+      .gift-lid {
+        position: absolute; bottom: 106px; left: 4px; width: 182px; height: 34px;
+        background: var(--grad); border-radius: 10px; z-index: 3;
+        transition: transform 0.7s cubic-bezier(0.34, 1.4, 0.64, 1), opacity 0.5s;
+        box-shadow: 0 10px 22px rgba(123, 45, 139, 0.3);
+      }
+      .gift-lid::after {
+        content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 26px;
+        transform: translateX(-50%); background: rgba(255, 255, 255, 0.35);
+      }
+      .gift-bow { position: absolute; bottom: 138px; left: 50%; transform: translateX(-50%); z-index: 4; transition: transform 0.7s ease, opacity 0.4s; }
+      .gift-heart {
+        position: absolute; bottom: 96px; left: 50%; transform: translate(-50%, 30px) scale(0.4);
+        opacity: 0; z-index: 2; transition: all 0.8s cubic-bezier(0.34, 1.5, 0.64, 1) 0.15s;
+        filter: drop-shadow(0 10px 24px rgba(224, 68, 124, 0.55));
+      }
+      .demo-stage.opened .gift-lid { transform: translate(64px, -74px) rotate(24deg); opacity: 0.92; }
+      .demo-stage.opened .gift-bow { transform: translate(30px, -96px) rotate(30deg); opacity: 0; }
+      .demo-stage.opened .gift-heart { transform: translate(-50%, -34px) scale(1); opacity: 1; }
+      .burst-heart { position: absolute; pointer-events: none; z-index: 6; animation: burst 1.15s ease-out forwards; }
+      @keyframes burst {
+        0% { transform: translate(0, 0) scale(0.5) rotate(0deg); opacity: 1; }
+        100% { transform: translate(var(--dx), var(--dy)) scale(1.15) rotate(var(--rot)); opacity: 0; }
+      }
+      .demo-content { display: none; max-width: 520px; margin: 26px auto 0; text-align: left; }
+      .demo-stage.opened .demo-content { display: block; animation: fadeUp 0.6s ease 0.35s both; }
+      .demo-letter {
+        background: var(--surface-2); border: 1px solid var(--line); border-radius: 18px;
+        padding: 22px; box-shadow: var(--shadow-sm); font-size: 0.98rem; color: var(--ink-soft);
+      }
+      .demo-letter .sign { font-family: "Caveat", cursive; font-size: 1.5rem; color: var(--rose-deep); }
+      .demo-photo { border-radius: 18px; overflow: hidden; margin-top: 18px; box-shadow: var(--shadow-sm); }
+      .demo-photo img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+      .demo-photo figcaption { background: var(--surface-2); padding: 10px 16px; font-family: "Caveat", cursive; font-size: 1.25rem; color: var(--ink-soft); text-align: center; }
+      .music-row {
+        display: flex; align-items: center; gap: 14px; margin-top: 18px;
+        background: var(--surface-2); border: 1px solid var(--line); border-radius: 16px; padding: 12px 16px;
+        box-shadow: var(--shadow-sm);
+      }
+      .music-btn {
+        width: 46px; height: 46px; flex: none; border-radius: 50%; border: none; cursor: pointer;
+        background: var(--grad); color: #fff; display: flex; align-items: center; justify-content: center;
+        box-shadow: 0 8px 18px rgba(194, 42, 126, 0.35);
+      }
+      .music-meta { text-align: left; line-height: 1.35; }
+      .music-meta b { display: block; font-size: 0.95rem; }
+      .music-meta span { font-size: 0.82rem; color: var(--ink-faint); font-weight: 700; }
+      .eq { display: none; align-items: flex-end; gap: 3px; height: 20px; margin-left: auto; }
+      .eq i { width: 4px; background: var(--rose); border-radius: 2px; animation: eqBounce 0.7s ease-in-out infinite alternate; }
+      .eq i:nth-child(2) { animation-delay: 0.15s; } .eq i:nth-child(3) { animation-delay: 0.3s; } .eq i:nth-child(4) { animation-delay: 0.45s; }
+      @keyframes eqBounce { from { height: 5px; } to { height: 19px; } }
+      .music-row.playing .eq { display: flex; }
+      .demo-actions { margin-top: 26px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+      #replayBtn { display: none; }
+      .demo-stage.opened #replayBtn { display: inline-flex; }
+      .demo-stage.opened #openBtn { display: none; }
+
+      /* Pricing */
+      .price-grid { display: grid; gap: 20px; }
+      @media (min-width: 900px) { .price-grid { grid-template-columns: repeat(3, 1fr); align-items: stretch; } }
+      .price-card {
+        background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+        padding: 28px 26px; display: flex; flex-direction: column; box-shadow: var(--shadow-sm);
+        position: relative;
+      }
+      .price-card.featured { border: 2px solid var(--rose); box-shadow: var(--shadow); }
+      .price-tag {
+        position: absolute; top: -13px; left: 24px; background: var(--grad); color: #fff;
+        font-size: 0.72rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
+        padding: 6px 14px; border-radius: 999px;
+      }
+      .price-card .p-label { font-size: 0.74rem; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-faint); margin: 4px 0 8px; }
+      .price-card h3 { font-size: 1.42rem; margin-bottom: 10px; }
+      .price-card .p-desc { color: var(--ink-soft); font-size: 0.95rem; margin: 0 0 18px; }
+      .price-amount { font-family: "Fraunces", serif; font-size: 2.5rem; font-weight: 650; line-height: 1; }
+      .price-amount small { font-size: 1rem; color: var(--ink-faint); font-family: "Nunito Sans", sans-serif; font-weight: 700; }
+      .price-card ul { list-style: none; margin: 20px 0 24px; padding: 18px 0 0; border-top: 1px solid var(--line); display: grid; gap: 10px; font-size: 0.93rem; color: var(--ink-soft); font-weight: 600; flex: 1; }
+      .price-card ul li { display: flex; gap: 9px; align-items: flex-start; }
+      .price-card ul svg { flex: none; margin-top: 4px; }
+      .price-card .btn { justify-content: center; }
+
+      /* Reviews */
+      .stars { color: var(--gold); letter-spacing: 3px; font-size: 1rem; }
+      .review-grid { display: grid; gap: 20px; }
+      @media (min-width: 900px) { .review-grid { grid-template-columns: repeat(3, 1fr); } }
+      .review {
+        background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+        padding: 26px; box-shadow: var(--shadow-sm);
+      }
+      .review p { margin: 12px 0 18px; color: var(--ink-soft); font-size: 0.97rem; }
+      .review .who { display: flex; align-items: center; gap: 12px; }
+      .avatar {
+        width: 44px; height: 44px; border-radius: 50%; background: var(--grad); color: #fff;
+        display: flex; align-items: center; justify-content: center;
+        font-family: "Fraunces", serif; font-weight: 650; font-size: 1.05rem; flex: none;
+      }
+      .review .who b { display: block; line-height: 1.25; }
+      .review .who span { font-size: 0.82rem; color: var(--ink-faint); font-weight: 700; }
+
+      /* Steps */
+      .steps { display: grid; gap: 20px; counter-reset: step; }
+      @media (min-width: 900px) { .steps { grid-template-columns: repeat(3, 1fr); } }
+      .step {
+        background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+        padding: 28px 26px; box-shadow: var(--shadow-sm);
+      }
+      .step .step-ico {
+        width: 52px; height: 52px; border-radius: 16px; background: var(--grad);
+        display: flex; align-items: center; justify-content: center; margin-bottom: 18px;
+        box-shadow: 0 10px 20px rgba(194, 42, 126, 0.3);
+      }
+      .step .step-num { font-size: 0.74rem; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: var(--rose-deep); }
+      @media (prefers-color-scheme: dark) { .step .step-num { color: #f08bb0; } }
+      .step h3 { font-size: 1.3rem; margin: 6px 0 10px; }
+      .step p { margin: 0; color: var(--ink-soft); font-size: 0.96rem; }
+
+      /* Owner */
+      .owner-card {
+        display: grid; gap: 28px; align-items: center;
+        background: var(--surface); border: 1px solid var(--line); border-radius: 28px;
+        padding: 34px 28px; box-shadow: var(--shadow);
+      }
+      @media (min-width: 820px) { .owner-card { grid-template-columns: auto 1fr auto; padding: 40px 44px; } }
+      .monogram {
+        width: 128px; height: 128px; border-radius: 32px; margin: 0 auto;
+        background: var(--grad); color: #fff; display: flex; flex-direction: column;
+        align-items: center; justify-content: center; box-shadow: 0 18px 36px rgba(194, 42, 126, 0.35);
+      }
+      .monogram .as { font-family: "Fraunces", serif; font-size: 2.9rem; font-weight: 650; line-height: 1; letter-spacing: 0.02em; }
+      .monogram .llc { font-size: 0.6rem; font-weight: 800; letter-spacing: 0.3em; margin-top: 6px; opacity: 0.9; }
+      .owner-card h2 { font-size: clamp(1.7rem, 5vw, 2.3rem); }
+      .owner-card p { color: var(--ink-soft); margin: 12px 0 0; max-width: 36em; }
+      .owner-facts { list-style: none; margin: 18px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+      .owner-facts li {
+        background: var(--bg-soft); border: 1px solid var(--line); border-radius: 999px;
+        padding: 7px 15px; font-size: 0.86rem; font-weight: 800; color: var(--ink-soft);
+      }
+      .haiti-badge {
+        text-align: center; background: var(--bg-soft); border: 1px solid var(--line);
+        border-radius: 20px; padding: 20px 22px; min-width: 168px;
+      }
+      .haiti-badge .flag { display: flex; width: 74px; height: 50px; margin: 0 auto 10px; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow-sm); }
+      .haiti-badge .flag i { flex: 1; }
+      .haiti-badge b { display: block; font-family: "Fraunces", serif; font-size: 1.12rem; }
+      .haiti-badge span { font-size: 0.82rem; color: var(--ink-soft); font-weight: 700; }
+
+      /* FAQ */
+      .faq { max-width: 760px; margin: 0 auto; display: grid; gap: 12px; }
+      .faq-item { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; box-shadow: var(--shadow-sm); }
+      .faq-q {
+        width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 14px;
+        background: none; border: none; cursor: pointer; text-align: left;
+        font-family: inherit; font-weight: 800; font-size: 1rem; color: var(--ink);
+        padding: 19px 22px;
+      }
+      .faq-q .chev { flex: none; transition: transform 0.3s ease; color: var(--rose-deep); }
+      .faq-item.open .faq-q .chev { transform: rotate(180deg); }
+      .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+      .faq-a p { margin: 0; padding: 0 22px 20px; color: var(--ink-soft); font-size: 0.96rem; }
+
+      /* Final CTA */
+      .cta-band {
+        background: var(--grad); border-radius: 30px; color: #fff; text-align: center;
+        padding: 52px 24px 46px; box-shadow: var(--shadow); position: relative; overflow: hidden;
+      }
+      .cta-band h2 { font-size: clamp(2rem, 6vw, 3rem); }
+      .cta-band p { opacity: 0.92; max-width: 34em; margin: 16px auto 28px; }
+      .cta-band .btn { background: #fff; color: var(--plum-deep); box-shadow: 0 14px 30px rgba(0, 0, 0, 0.22); }
+      .guarantees { display: grid; gap: 16px; margin-top: 44px; text-align: left; }
+      @media (min-width: 820px) { .guarantees { grid-template-columns: repeat(4, 1fr); } }
+      .guarantee { display: flex; gap: 12px; align-items: flex-start; font-size: 0.9rem; line-height: 1.45; }
+      .guarantee b { display: block; font-size: 0.95rem; }
+      .guarantee span { opacity: 0.88; }
+      .guarantee svg { flex: none; margin-top: 2px; }
+
+      /* Footer */
+      footer.site { border-top: 1px solid var(--line); padding: 52px 0 34px; margin-top: 70px; background: var(--bg-soft); }
+      .foot-grid { display: grid; gap: 34px; }
+      @media (min-width: 860px) { .foot-grid { grid-template-columns: 1.4fr 1fr 1fr 1fr; } }
+      .foot-grid h4 { margin: 0 0 14px; font-size: 0.8rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-faint); }
+      .foot-grid ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 9px; font-size: 0.94rem; font-weight: 600; }
+      .foot-grid ul a { text-decoration: none; color: var(--ink-soft); }
+      .foot-grid ul a:hover { color: var(--rose-deep); }
+      .foot-about { color: var(--ink-soft); font-size: 0.94rem; max-width: 30em; margin: 14px 0 0; }
+      .foot-bottom {
+        border-top: 1px solid var(--line); margin-top: 40px; padding-top: 22px;
+        display: flex; flex-wrap: wrap; gap: 10px 26px; justify-content: space-between;
+        font-size: 0.86rem; color: var(--ink-faint); font-weight: 600;
+      }
+      .reveal { opacity: 1; }
+      .reveal.in { animation: fadeUp 0.55s ease both; }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        .reveal.in { animation: none; }
+        .screen.active, .demo-stage.opened .demo-content { animation: none; }
+        .burst-heart { display: none; }
+      }
+
+      /* ---------- Créateur de cadeau (assistant en 6 étapes) ---------- */
+      .wz {
+        --wz-bg: #40091d; --wz-panel: #57122a; --wz-field: rgba(0, 0, 0, 0.22);
+        --wz-line: rgba(255, 255, 255, 0.16); --wz-accent: #d92b4f; --wz-accent2: #eec27f;
+        --wz-ink: #fdf3e7; --wz-soft: #e8c9cf;
+        position: fixed; inset: 0; z-index: 200; overflow-y: auto; overflow-x: hidden;
+        background: var(--wz-bg); color: var(--wz-ink);
+        font-family: "Nunito Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+        transition: background 0.35s ease;
+      }
+      .wz[hidden] { display: none; }
+      .wz-shell { max-width: 680px; margin: 0 auto; padding: 0 16px 34px; }
+      .wz-top {
+        position: sticky; top: 0; z-index: 6; display: flex; align-items: center; gap: 10px;
+        padding: 13px 2px 11px; background: var(--wz-bg); transition: background 0.35s ease;
+      }
+      .wz-brand { font-family: "Fraunces", Georgia, serif; font-weight: 650; font-size: 1.08rem; margin-right: auto; }
+      .wz-saved { display: inline-flex; align-items: center; gap: 6px; font-size: 0.8rem; font-weight: 700; color: var(--wz-soft); opacity: 0; transition: opacity 0.3s; text-align: right; }
+      .wz-saved.show { opacity: 1; }
+      .wz-saved svg { flex: none; }
+      .wz-close {
+        width: 38px; height: 38px; flex: none; border-radius: 50%; cursor: pointer;
+        border: 1px solid var(--wz-line); background: var(--wz-field); color: var(--wz-ink);
+        display: flex; align-items: center; justify-content: center;
+      }
+      .wz-progress { display: flex; align-items: center; margin: 10px 0 4px; }
+      .wz-dot {
+        width: 34px; height: 34px; flex: none; border-radius: 50%;
+        border: 2px solid var(--wz-line); color: var(--wz-soft);
+        display: flex; align-items: center; justify-content: center;
+        font-weight: 800; font-size: 0.88rem; background: transparent;
+      }
+      .wz-dot.now { background: var(--wz-accent); border-color: var(--wz-accent); color: #fff; }
+      .wz-dot.done { background: var(--wz-accent2); border-color: var(--wz-accent2); color: rgba(0, 0, 0, 0.62); }
+      .wz-bar { flex: 1; height: 2px; background: var(--wz-line); min-width: 6px; }
+      .wz-bar.done { background: var(--wz-accent2); }
+      .wz-step-title { text-align: center; font-family: "Fraunces", Georgia, serif; font-weight: 650; font-size: 1.18rem; margin: 12px 0 2px; }
+      .wz-preview-label { text-align: center; font-size: 0.68rem; letter-spacing: 0.22em; font-weight: 800; text-transform: uppercase; color: var(--wz-soft); margin: 8px 0 0; }
+      @media (min-width: 820px) {
+        .wz-shell { max-width: 880px; }
+        .wz-body { display: grid; grid-template-columns: 252px minmax(0, 1fr); gap: 28px; align-items: start; }
+        .wz-preview-col { position: sticky; top: 76px; }
+      }
+      /* Aperçu téléphone */
+      .wz-phone {
+        width: min(228px, 68vw); margin: 12px auto 22px; background: #141013;
+        border-radius: 38px; padding: 9px; box-shadow: 0 26px 50px rgba(0, 0, 0, 0.4);
+      }
+      .wz-screen {
+        border-radius: 29px; min-height: 348px; padding: 26px 15px 20px;
+        display: flex; flex-direction: column; align-items: center; text-align: center; gap: 9px;
+        transition: background 0.3s ease;
+      }
+      .pv-title { font-size: 1.45rem; line-height: 1.16; margin: 6px 0 0; font-weight: 650; }
+      .pv-msg { font-size: 0.8rem; font-style: italic; opacity: 0.88; margin: 0; }
+      .pv-env { width: 128px; height: 84px; border-radius: 8px; position: relative; margin-top: 16px; box-shadow: 0 14px 28px rgba(0, 0, 0, 0.35); flex: none; }
+      .pv-env::before { content: ""; position: absolute; inset: 0; border-radius: 8px 8px 0 0; background: rgba(0, 0, 0, 0.20); clip-path: polygon(0 0, 100% 0, 50% 60%); }
+      .pv-seal {
+        position: absolute; top: 55%; left: 50%; transform: translate(-50%, -50%);
+        width: 34px; height: 34px; border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3); font-size: 0.95rem;
+      }
+      .pv-hint { font-size: 0.7rem; font-style: italic; opacity: 0.78; margin: 2px 0 0; }
+      .pv-open {
+        margin-top: auto; font-size: 0.74rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase;
+        border: 1.5px solid currentColor; border-radius: 999px; padding: 7px 18px; opacity: 0.9;
+      }
+      /* Panneaux d'étapes */
+      .wz-step { display: none; }
+      .wz-step.on { display: block; animation: fadeUp 0.35s ease both; }
+      .wz-card { background: var(--wz-panel); border: 1px solid var(--wz-line); border-radius: 20px; padding: 20px 16px; transition: background 0.35s ease; }
+      .wz-card h2 { font-size: 1.32rem; margin-bottom: 8px; }
+      .wz-card .wz-lede { color: var(--wz-soft); font-size: 0.94rem; margin: 0 0 18px; }
+      .wz-group-label { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: var(--wz-soft); margin: 20px 0 10px; }
+      .wz-group-label:first-of-type { margin-top: 4px; }
+      /* Thèmes */
+      .wz-theme-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+      .wz-theme-card {
+        background: var(--wz-field); border: 2px solid var(--wz-line); border-radius: 16px;
+        padding: 16px 10px 14px; text-align: center; cursor: pointer; color: var(--wz-ink);
+        font-family: inherit; display: flex; flex-direction: column; align-items: center; gap: 5px;
+      }
+      .wz-theme-card:hover { border-color: var(--wz-accent2); }
+      .wz-theme-card[aria-pressed="true"] { border-color: var(--wz-accent); box-shadow: 0 0 0 3px var(--wz-field), 0 12px 24px rgba(0, 0, 0, 0.28); }
+      .wz-theme-card.wide { grid-column: 1 / -1; width: calc(50% - 6px); justify-self: center; }
+      .wz-theme-ico { width: 46px; height: 46px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 3px; }
+      .wz-theme-card b { font-size: 1rem; }
+      .wz-theme-card span.desc { font-size: 0.78rem; color: var(--wz-soft); line-height: 1.35; }
+      .wz-swatches { display: flex; gap: 5px; margin-top: 4px; }
+      .wz-swatches i { width: 13px; height: 13px; border-radius: 50%; border: 1.5px solid rgba(255, 255, 255, 0.45); display: block; }
+      /* Champs */
+      .wz-field { margin-bottom: 14px; }
+      .wz-field label { display: block; font-size: 0.8rem; font-weight: 800; color: var(--wz-soft); margin-bottom: 6px; }
+      .wz-input, .wz-select, .wz-textarea {
+        width: 100%; background: var(--wz-field); border: 1px solid var(--wz-line); border-radius: 12px;
+        padding: 12px 14px; color: var(--wz-ink); font-family: inherit; font-size: 0.95rem;
+      }
+      .wz-textarea { min-height: 84px; resize: vertical; line-height: 1.5; }
+      .wz-input::placeholder, .wz-textarea::placeholder { color: var(--wz-soft); opacity: 0.75; }
+      .wz-input:focus, .wz-select:focus, .wz-textarea:focus { outline: 2px solid var(--wz-accent); outline-offset: 1px; }
+      .wz-select option { color: #2b1a20; }
+      .wz-colors { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+      .wz-colors label { display: block; font-size: 0.78rem; font-weight: 800; color: var(--wz-soft); margin-bottom: 6px; }
+      .wz-color { width: 100%; height: 46px; border: 1px solid var(--wz-line); border-radius: 11px; padding: 3px; background: var(--wz-field); cursor: pointer; }
+      .wz-color-hex { display: block; text-align: center; font-size: 0.72rem; font-weight: 700; color: var(--wz-soft); margin-top: 4px; }
+      .wz-hint-note { font-size: 0.8rem; color: var(--wz-soft); margin: 6px 0 0; line-height: 1.45; }
+      /* Blocs histoire */
+      .wz-block { background: var(--wz-field); border: 1px solid var(--wz-line); border-radius: 16px; padding: 16px 14px; margin-bottom: 14px; }
+      .wz-block-head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+      .wz-block-head b { font-family: "Fraunces", Georgia, serif; font-size: 1.05rem; font-weight: 650; margin-right: auto; }
+      .wz-mini-btn {
+        border: 1px solid var(--wz-line); background: transparent; color: var(--wz-ink);
+        font-family: inherit; font-weight: 700; font-size: 0.8rem; cursor: pointer;
+        border-radius: 999px; padding: 7px 13px;
+      }
+      .wz-mini-btn:hover { border-color: var(--wz-accent2); }
+      .wz-mini-btn.danger:hover { border-color: #ff7d92; color: #ffb3c0; }
+      .wz-add-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+      .wz-add-btn {
+        border: 1.5px dashed var(--wz-line); background: transparent; color: var(--wz-ink);
+        font-family: inherit; font-weight: 700; font-size: 0.85rem; cursor: pointer;
+        border-radius: 999px; padding: 9px 15px;
+      }
+      .wz-add-btn:hover { border-color: var(--wz-accent); }
+      .wz-thumbs { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 10px; }
+      .wz-thumb { position: relative; width: 66px; height: 66px; }
+      .wz-thumb img { width: 66px; height: 66px; object-fit: cover; border-radius: 11px; border: 1px solid var(--wz-line); }
+      .wz-thumb button {
+        position: absolute; top: -7px; right: -7px; width: 22px; height: 22px; border-radius: 50%;
+        border: none; background: #40222f; color: #fff; cursor: pointer; font-size: 0.8rem; line-height: 1;
+        display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+      }
+      .wz-file-label {
+        display: inline-flex; align-items: center; gap: 8px; cursor: pointer;
+        border: 1px solid var(--wz-line); border-radius: 999px; padding: 9px 16px;
+        font-weight: 700; font-size: 0.85rem; background: var(--wz-panel);
+      }
+      .wz-file-label:hover { border-color: var(--wz-accent2); }
+      .wz-file-name { font-size: 0.82rem; color: var(--wz-soft); margin-top: 8px; word-break: break-word; }
+      .wz-item { border-top: 1px dashed var(--wz-line); padding-top: 12px; margin-top: 12px; }
+      .wz-item:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+      .wz-item-head { display: flex; align-items: center; margin-bottom: 8px; }
+      .wz-item-head span { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--wz-soft); margin-right: auto; }
+      .wz-radio-row { display: flex; align-items: center; gap: 9px; font-size: 0.9rem; font-weight: 600; padding: 5px 0; cursor: pointer; }
+      .wz-radio-row input { accent-color: var(--wz-accent); width: 18px; height: 18px; flex: none; }
+      .wz-answer-row { display: flex; align-items: center; gap: 9px; margin-bottom: 9px; }
+      .wz-answer-row input[type="radio"] { accent-color: var(--wz-accent); width: 19px; height: 19px; flex: none; }
+      .wz-answer-row .wz-input { flex: 1; }
+      /* Options ouverture */
+      .wz-opt {
+        display: flex; gap: 13px; width: 100%; text-align: left; cursor: pointer;
+        background: var(--wz-field); border: 2px solid var(--wz-line); border-radius: 15px;
+        padding: 15px 16px; color: var(--wz-ink); font-family: inherit; margin-bottom: 11px; align-items: flex-start;
+      }
+      .wz-opt[aria-pressed="true"] { border-color: var(--wz-accent); }
+      .wz-opt .dot { width: 21px; height: 21px; flex: none; border-radius: 50%; border: 2px solid var(--wz-soft); margin-top: 2px; position: relative; }
+      .wz-opt[aria-pressed="true"] .dot { border-color: var(--wz-accent); }
+      .wz-opt[aria-pressed="true"] .dot::after { content: ""; position: absolute; inset: 3.5px; border-radius: 50%; background: var(--wz-accent); }
+      .wz-opt b { display: block; font-size: 1rem; margin-bottom: 2px; }
+      .wz-opt span.txt { font-size: 0.87rem; color: var(--wz-soft); line-height: 1.4; }
+      /* Récapitulatif */
+      .wz-recap { display: grid; gap: 0; margin: 4px 0 6px; }
+      .wz-recap-row { display: grid; grid-template-columns: 118px minmax(0, 1fr); gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--wz-line); }
+      .wz-recap-row:last-child { border-bottom: none; }
+      .wz-recap-row dt { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--wz-soft); padding-top: 3px; }
+      .wz-recap-row dd { margin: 0; font-size: 0.93rem; line-height: 1.5; overflow-wrap: break-word; }
+      .wz-recap-row dd ul { margin: 4px 0 0; padding-left: 17px; }
+      .wz-recap-row dd li { margin-bottom: 3px; }
+      /* Finaliser */
+      .wz-wa-btn {
+        display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%;
+        background: #1fae55; color: #fff; font-weight: 800; font-size: 1.02rem; text-decoration: none;
+        border-radius: 999px; padding: 16px 20px; margin-top: 18px; box-shadow: 0 14px 30px rgba(0, 0, 0, 0.3);
+      }
+      .wz-wa-btn:active { transform: scale(0.98); }
+      /* Navigation bas */
+      .wz-nav {
+        position: sticky; bottom: 0; z-index: 6; display: flex; justify-content: space-between; align-items: center; gap: 12px;
+        padding: 14px 2px 6px; margin-top: 20px;
+        background: linear-gradient(transparent, var(--wz-bg) 34%);
+      }
+      .wz-btn-prev {
+        border: none; background: transparent; color: var(--wz-soft); cursor: pointer;
+        font-family: inherit; font-weight: 800; font-size: 0.98rem; padding: 13px 8px;
+        display: inline-flex; align-items: center; gap: 7px;
+      }
+      .wz-btn-prev:disabled { opacity: 0.35; cursor: default; }
+      .wz-btn-next {
+        border: none; cursor: pointer; color: #fff; font-family: inherit; font-weight: 800; font-size: 1rem;
+        background: linear-gradient(120deg, var(--wz-accent), var(--wz-accent2));
+        border-radius: 999px; padding: 14px 28px; display: inline-flex; align-items: center; gap: 8px;
+        box-shadow: 0 12px 26px rgba(0, 0, 0, 0.3); text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+      }
+      .wz-btn-next:active { transform: scale(0.97); }
+      .wz-btn-next:disabled { opacity: 0.45; cursor: not-allowed; filter: grayscale(0.55); box-shadow: none; }
+      .wz-btn-next:disabled:active { transform: none; }
+      /* Messages d'erreur de validation */
+      .wz-error {
+        display: flex; gap: 7px; align-items: flex-start; margin: 10px 0 0;
+        padding: 9px 12px; border-radius: 10px; background: #fde7ec; color: #a11230;
+        font-size: 0.88rem; font-weight: 700; line-height: 1.45;
+      }
+      .wz-error[hidden] { display: none; }
+      .wz-input.err { border-color: #e0244e; box-shadow: 0 0 0 3px rgba(224, 36, 78, 0.18); }
+      /* Étape 6 : paiement */
+      .wz-pay { background: var(--wz-field); border: 1px solid var(--wz-line); border-radius: 16px; padding: 16px 14px; margin-top: 4px; }
+      .wz-pay h3 { font-size: 1.12rem; margin: 0 0 8px; }
+      .wz-pay p { font-size: 0.94rem; line-height: 1.6; margin: 0 0 12px; }
+      .wz-pay p:last-child { margin-bottom: 0; }
+      .wz-pay-row { border-top: 1px dashed var(--wz-line); padding: 10px 0; display: grid; gap: 2px; }
+      .wz-pay-row b { font-size: 0.98rem; }
+      .wz-pay-row span { font-size: 0.92rem; color: var(--wz-soft); overflow-wrap: break-word; }
+      .wz-callout {
+        display: flex; gap: 10px; align-items: flex-start; margin-top: 12px;
+        background: rgba(238, 194, 127, 0.16); border: 1.5px solid var(--wz-accent2);
+        border-radius: 13px; padding: 13px 14px;
+        font-size: 0.94rem; line-height: 1.55; font-weight: 700;
+      }
+      .wz-callout svg { flex: none; margin-top: 2px; }
+      .wz-callout b { color: var(--wz-accent2); }
+      /* Modales internes */
+      .wz-modal { position: fixed; inset: 0; z-index: 220; background: rgba(12, 4, 9, 0.62); display: flex; align-items: center; justify-content: center; padding: 20px; }
+      .wz-modal[hidden] { display: none; }
+      .wz-modal-card { background: var(--wz-panel); color: var(--wz-ink); border: 1px solid var(--wz-line); border-radius: 20px; padding: 24px 20px; max-width: 420px; width: 100%; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45); }
+      .wz-modal-card h3 { font-size: 1.25rem; margin-bottom: 8px; }
+      .wz-modal-card p { color: var(--wz-soft); font-size: 0.94rem; margin: 0 0 18px; }
+      .wz-modal-actions { display: grid; gap: 10px; }
+      .wz-modal-actions .wz-btn-next { justify-content: center; }
+      .wz-modal-ghost {
+        border: 1px solid var(--wz-line); background: transparent; color: var(--wz-ink); cursor: pointer;
+        font-family: inherit; font-weight: 800; font-size: 0.95rem; border-radius: 999px; padding: 13px 20px;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .wz-step.on { animation: none; }
+        .wz { transition: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ============ HEADER ============ -->
+    <header class="site">
+      <div class="wrap nav">
+        <a class="brand" href="#top" aria-label="Swiftt Cadeaux — accueil">
+          <svg class="logo-badge" viewBox="0 0 64 64" role="img" aria-label="Logo Swiftt Cadeaux">
+            <defs>
+              <linearGradient id="lg-head" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#f0567a"/><stop offset="0.5" stop-color="#c22a7e"/><stop offset="1" stop-color="#7b2d8b"/>
+              </linearGradient>
+            </defs>
+            <rect width="64" height="64" rx="15" fill="url(#lg-head)"/>
+            <rect x="14" y="30" width="36" height="22" rx="3.5" fill="#fff"/>
+            <rect x="11.5" y="22.5" width="41" height="9" rx="3.5" fill="#fff"/>
+            <rect x="29" y="22.5" width="6" height="29.5" fill="#f0567a"/>
+            <path d="M32 21c-4.6-1.2-6.4-3.4-6.4-5.6 0-1.9 1.4-3.1 3-3.1 1.9 0 3.4 1.7 3.4 3.9 0-2.2 1.5-3.9 3.4-3.9 1.6 0 3 1.2 3 3.1 0 2.2-1.8 4.4-6.4 5.6z" fill="#fff"/>
+          </svg>
+          <span>
+            <span class="brand-name">Swiftt <span class="c2">Cadeaux</span></span>
+            <span class="brand-sub" style="display:block">by Andy Swiftt · Haïti</span>
+          </span>
+        </a>
+        <nav class="nav-links" aria-label="Navigation principale">
+          <a href="#cadeaux">Nos cadeaux</a>
+          <a href="#demo">La démo</a>
+          <a href="#avis">Avis</a>
+          <a href="#createur">Le créateur</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+        <button class="btn btn-grad btn-sm" type="button" data-open-wizard>Créer mon cadeau</button>
+      </div>
+    </header>
+
+    <main id="top">
+      <!-- ============ HERO ============ -->
+      <section class="hero">
+        <div class="wrap hero-grid">
+          <div>
+            <a class="pill-link" href="#cadeaux">Le calendrier surprise
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <div>
+              <span class="hero-note">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="#e0447c"><path d="M12 2l2.1 6.2L20 10l-5.9 1.8L12 18l-2.1-6.2L4 10l5.9-1.8z"/><path d="M19 15l.9 2.6L22.5 18.5l-2.6.9L19 22l-.9-2.6-2.6-.9 2.6-.9z"/></svg>
+                Un cadeau interactif à découvrir, pas une simple carte
+              </span>
+            </div>
+            <p class="eyebrow">Cadeau numérique personnalisé</p>
+            <h1>Une surprise qu'on <span class="grad-text">n'oublie</span> pas.</h1>
+            <p class="lede">Choisis un univers, puis rassemble tes mots, des photos, une musique et les souvenirs qui comptent. La personne scanne le QR, <strong>ouvre la surprise</strong> et découvre chaque moment à son rythme.</p>
+            <div class="hero-ctas">
+              <button class="btn btn-grad" type="button" data-open-wizard>Créer mon cadeau
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </button>
+              <a class="btn btn-ghost" href="#demo">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-6.5 10-6.5S22 12 22 12s-3.5 6.5-10 6.5S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+                Voir la démo
+              </a>
+            </div>
+            <ul class="trust">
+              <li>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#e0447c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                Prêt en quelques minutes · Aucun compte requis · Sans pub
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e0447c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+                Cadeau privé et confidentiel · Non publié, non revendu, jamais utilisé à des fins publicitaires
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="#e0447c"><path d="M32 50s-13.5-8.6-13.5-18A7.6 7.6 0 0 1 32 27a7.6 7.6 0 0 1 13.5 5c0 9.4-13.5 18-13.5 18z" transform="scale(0.46) translate(2 2)"/></svg>
+                Imaginé et créé en Haïti, avec le cœur
+              </li>
+            </ul>
+          </div>
+
+          <div class="showcase">
+            <div class="tabs" role="tablist" aria-label="Types de cadeaux">
+              <button class="tab" role="tab" id="tab-gift" aria-selected="true" aria-controls="screen-gift" data-screen="screen-gift">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4.5" rx="1"/><path d="M5 12.5V21h14v-8.5M12 8v13M12 8s-4.5.2-4.5-2.4C7.5 3.4 12 3.2 12 8zM12 8s4.5.2 4.5-2.4C16.5 3.4 12 3.2 12 8z"/></svg>
+                Cadeau interactif
+              </button>
+              <button class="tab" role="tab" id="tab-cal" aria-selected="false" aria-controls="screen-cal" data-screen="screen-cal">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+                Calendrier
+              </button>
+              <button class="tab" role="tab" id="tab-card" aria-selected="false" aria-controls="screen-card" data-screen="screen-card">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.4"/><path d="M3.5 20c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5M16 5.4a3.4 3.4 0 0 1 0 6.2M17.8 15.4c1.6.7 2.5 2.2 2.8 4.6"/></svg>
+                Carte collective
+              </button>
+            </div>
+
+            <div class="phone" aria-label="Aperçu d'un cadeau Swiftt Cadeaux sur téléphone">
+              <div class="phone-screen">
+                <div class="phone-notch"></div>
+
+                <!-- Écran 1 : cadeau interactif -->
+                <div class="screen active" id="screen-gift" role="tabpanel" aria-labelledby="tab-gift">
+                  <p class="mini-eyebrow">Pour toi, mon amour</p>
+                  <h3>Quelques mots pour te rappeler à quel point tu comptes.</h3>
+                  <div class="letter-card">
+                    Cette journée est entièrement pour toi. Ouvre chaque souvenir, écoute notre chanson, et souviens-toi : tu es aimée, aujourd'hui et tous les autres jours.
+                    <span class="sign">— avec tout mon cœur</span>
+                  </div>
+                  <figure class="polaroid">
+                    <img src="assets/demo-couple.webp" alt="Illustration d'un couple enlacé devant un coucher de soleil rose" />
+                    <figcaption>nous deux</figcaption>
+                  </figure>
+                </div>
+
+                <!-- Écran 2 : calendrier -->
+                <div class="screen" id="screen-cal" role="tabpanel" aria-labelledby="tab-cal">
+                  <p class="mini-eyebrow">Calendrier surprise</p>
+                  <h3>Un petit mot chaque jour, rien que pour toi.</h3>
+                  <div class="cal-grid" id="calGrid" aria-label="Jours du calendrier surprise"></div>
+                  <div class="cal-msg" id="calMsg">
+                    <strong>À toi de jouer</strong>
+                    Touche un jour pour ouvrir sa surprise…
+                  </div>
+                </div>
+
+                <!-- Écran 3 : carte collective -->
+                <div class="screen" id="screen-card" role="tabpanel" aria-labelledby="tab-card">
+                  <p class="mini-eyebrow">Carte collective</p>
+                  <h3>Tous ensemble, pour ton anniversaire.</h3>
+                  <div class="screen-photo">
+                    <img src="assets/demo-friends.webp" alt="Illustration d'amis qui fêtent un anniversaire autour d'un gâteau" />
+                  </div>
+                  <div class="note-bubble">Joyeux anniversaire ! Merci d'être la personne la plus solaire qu'on connaisse. <span class="from">— Manmi</span></div>
+                  <div class="note-bubble">25 ans d'amitié, et toujours la même folie. On t'aime fort ! <span class="from">— Woudy</span></div>
+                  <div class="note-bubble">Que cette année t'apporte tout ce que ton cœur désire. <span class="from">— Sœurette</span></div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ DÉMO ============ -->
+      <section class="block alt" id="demo">
+        <div class="wrap">
+          <div class="sec-head center reveal">
+            <p class="eyebrow">La démo</p>
+            <h2>Vis la surprise, <span class="grad-text">comme elle la vivra</span></h2>
+            <p>C'est exactement ce que la personne découvre après avoir scanné le QR code de sa carte. Touche le coffret pour l'ouvrir.</p>
+          </div>
+
+          <div class="demo-stage reveal" id="demoStage">
+            <div class="qr-chip">
+              <svg width="62" height="62" viewBox="0 0 100 100" aria-hidden="true">
+                <rect width="100" height="100" rx="10" fill="#fff"/>
+                <g fill="#40222f">
+                  <rect x="10" y="10" width="24" height="24" rx="3"/><rect x="17" y="17" width="10" height="10" fill="#fff"/>
+                  <rect x="66" y="10" width="24" height="24" rx="3"/><rect x="73" y="17" width="10" height="10" fill="#fff"/>
+                  <rect x="10" y="66" width="24" height="24" rx="3"/><rect x="17" y="73" width="10" height="10" fill="#fff"/>
+                  <rect x="46" y="12" width="8" height="8"/><rect x="46" y="28" width="8" height="8"/><rect x="58" y="20" width="8" height="8"/>
+                  <rect x="12" y="46" width="8" height="8"/><rect x="28" y="46" width="8" height="8"/><rect x="46" y="46" width="8" height="8"/>
+                  <rect x="66" y="46" width="8" height="8"/><rect x="82" y="46" width="8" height="8"/><rect x="74" y="58" width="8" height="8"/>
+                  <rect x="46" y="66" width="8" height="8"/><rect x="58" y="74" width="8" height="8"/><rect x="66" y="66" width="8" height="8"/>
+                  <rect x="82" y="66" width="8" height="8"/><rect x="82" y="82" width="8" height="8"/><rect x="46" y="82" width="8" height="8"/>
+                </g>
+                <path d="M50 63s-5.8-3.7-5.8-7.7c0-2 1.6-3.4 3.3-3.4 1 0 2 .6 2.5 1.4.5-.8 1.5-1.4 2.5-1.4 1.7 0 3.3 1.4 3.3 3.4 0 4-5.8 7.7-5.8 7.7z" fill="#e0447c"/>
+              </svg>
+              <p><b>Un QR code unique</b><br />Imprimé sur une jolie carte, ou envoyé par lien — au choix.</p>
+            </div>
+
+            <div class="gift-box" id="giftBox" aria-hidden="true">
+              <svg class="gift-heart" width="86" height="80" viewBox="0 0 24 24" fill="#e0447c"><path d="M12 21s-7.5-4.7-10-9.3C.4 8.6 2.2 5 5.7 5c2 0 3.4 1.1 4.3 2.4h4C14.9 6.1 16.3 5 18.3 5c3.5 0 5.3 3.6 3.7 6.7C19.5 16.3 12 21 12 21z" transform="scale(0.92) translate(1 -1)"/><path d="M12 20.5C7 16.9 3.6 13.6 2.7 10.6 2 8.3 3.6 6 5.9 6c1.9 0 3.3 1.1 4.1 2.6l2 3.7 2-3.7C14.8 7.1 16.2 6 18.1 6c2.3 0 3.9 2.3 3.2 4.6-.9 3-4.3 6.3-9.3 9.9z" fill="#e0447c"/></svg>
+              <div class="gift-body"></div>
+              <div class="gift-lid"></div>
+              <svg class="gift-bow" width="72" height="36" viewBox="0 0 72 36" fill="none" stroke="#ffd9e4" stroke-width="5" stroke-linecap="round">
+                <path d="M36 30C26 28 16 22 16 13c0-6 6-8 11-5 5 3 9 12 9 22z"/>
+                <path d="M36 30c10-2 20-8 20-17 0-6-6-8-11-5-5 3-9 12-9 22z"/>
+              </svg>
+            </div>
+
+            <div class="demo-actions">
+              <button class="btn btn-grad" id="openBtn" type="button">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4.5" rx="1"/><path d="M5 12.5V21h14v-8.5M12 8v13M12 8s-4.5.2-4.5-2.4C7.5 3.4 12 3.2 12 8zM12 8s4.5.2 4.5-2.4C16.5 3.4 12 3.2 12 8z"/></svg>
+                Ouvrir la surprise
+              </button>
+              <button class="btn btn-ghost" id="replayBtn" type="button">Refermer et rejouer</button>
+            </div>
+
+            <div class="demo-content">
+              <div class="demo-letter">
+                Mon trésor,<br /><br />
+                Si tu lis ces mots, c'est que je voulais te rappeler quelque chose d'important : tu es la plus belle chose qui me soit arrivée. Chaque photo, chaque chanson de ce cadeau est un morceau de nous. Merci d'exister, merci d'être toi.
+                <span class="sign">— avec tout mon cœur, pour toujours</span>
+              </div>
+              <figure class="demo-photo" style="margin-left:0;margin-right:0">
+                <img src="assets/demo-gift.webp" alt="Illustration d'un coffret cadeau ouvert d'où s'élève un cœur lumineux, entouré de roses et de lettres" />
+                <figcaption style="margin:0">le moment où tout commence…</figcaption>
+              </figure>
+              <div class="music-row" id="musicRow">
+                <button class="music-btn" id="musicBtn" type="button" aria-label="Écouter la mélodie de la démo">
+                  <svg id="musicIcoPlay" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>
+                  <svg id="musicIcoPause" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="display:none"><rect x="6" y="5" width="4.5" height="14" rx="1"/><rect x="13.5" y="5" width="4.5" height="14" rx="1"/></svg>
+                </button>
+                <div class="music-meta">
+                  <b>Notre chanson</b>
+                  <span>Mélodie douce · boîte à musique</span>
+                </div>
+                <div class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ TARIFS ============ -->
+      <section class="block" id="cadeaux">
+        <div class="wrap">
+          <div class="sec-head center reveal">
+            <p class="eyebrow">Nos cadeaux numériques</p>
+            <h2>Trois façons <span class="grad-text">d'offrir</span></h2>
+            <p>Un seul paiement, aucun abonnement. Tu vois le résultat avant de payer, et tu peux le modifier après.</p>
+          </div>
+
+          <div class="price-grid">
+            <article class="price-card featured reveal">
+              <span class="price-tag">Notre signature</span>
+              <p class="p-label">Cadeau unique · En une fois</p>
+              <h3>Le cadeau interactif surprise</h3>
+              <p class="p-desc">Tes mots, tes photos, ta musique et tes souvenirs réunis dans une surprise à découvrir moment après moment.</p>
+              <p class="price-amount">500&nbsp;G</p>
+              <ul>
+                <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#e0447c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Photos et souvenirs illimités</li>
+                <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#e0447c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Une musique au choix</li>
+                <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#e0447c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>QR code + lien privé</li>
+                <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#e0447c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Modifiable après l'envoi</li>
+              </ul>
+              <a class="btn btn-grad" href="https://wa.me/18735972113?text=Bonjour%20Andy%20!%20Je%20veux%20le%20Cadeau%20interactif%20surprise%20(500%20G)%20%F0%9F%8E%81" target="_blank" rel="noopener">Choisir ce cadeau</a>
+            </article>
+
+            <article class="price-card reveal">
+              <p class="p-label">Jour après jour</p>
+              <h3>Le calendrier surprise</h3>
+              <p class="p-desc">Un mot doux, une photo ou un souvenir à ouvrir chaque jour : 7, 14 ou 30 jours d'émotion en douceur.</p>
+              <p class="price-amount">1&nbsp;000&nbsp;G</p>
+              <ul>
+                <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#e0447c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>7, 14 ou 30 cases à ouvrir</li>
+                <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#e0447c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Un message débloqué par jour</li>
+                <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#e0447c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Parfait pour un anniversaire ou un compte à rebours</li>
+                <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#e0447c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>QR code + lien privé</li>
+              </ul>
+              <a class="btn btn-ghost" href="https://wa.me/18735972113?text=Bonjour%20Andy%20!%20Je%20veux%20le%20Calendrier%20surprise%20(1%20000%20G)%20%F0%9F%93%85" target="_blank" rel="noopener">Choisir ce cadeau</a>
+            </article>
+
+            <article class="price-card reveal">
+              <p class="p-label">À plusieurs</p>
+              <h3>La carte collective</h3>
+              <p class="p-desc">Famille, amis, collègues : chacun ajoute son mot, sa photo ou son emoji. La personne reçoit tout, d'un seul cœur.</p>
+              <p class="price-amount">1&nbsp;000&nbsp;G</p>
+              <ul>
+                <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#e0447c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Contributeurs illimités</li>
+                <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#e0447c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Un lien simple à partager au groupe</li>
+                <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#e0447c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Idéale pour les anniversaires et les départs</li>
+                <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#e0447c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>QR code + lien privé</li>
+              </ul>
+              <a class="btn btn-ghost" href="https://wa.me/18735972113?text=Bonjour%20Andy%20!%20Je%20veux%20la%20Carte%20collective%20(1%20000%20G)%20%F0%9F%92%8C" target="_blank" rel="noopener">Choisir ce cadeau</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ AVIS ============ -->
+      <section class="block alt" id="avis">
+        <div class="wrap">
+          <div class="sec-head reveal">
+            <p class="eyebrow">Exemples de retours</p>
+            <h2>Des mots doux après <span class="grad-text">la surprise</span></h2>
+            <p>Trois exemples de retours, dans l'esprit des mots reçus après une surprise Swiftt Cadeaux.</p>
+          </div>
+          <div class="review-grid">
+            <article class="review reveal">
+              <div class="stars" aria-label="5 étoiles sur 5">★★★★★</div>
+              <p>« Je l'ai offert à ma copine pour nos deux ans. Quand elle a scanné le QR et vu nos photos avec notre chanson, elle a pleuré de joie. Je n'aurais jamais trouvé mieux. »</p>
+              <div class="who">
+                <span class="avatar">J</span>
+                <div><b>Jean-Robert</b><span>Cadeau interactif · Port-au-Prince</span></div>
+              </div>
+            </article>
+            <article class="review reveal">
+              <div class="stars" aria-label="5 étoiles sur 5">★★★★★</div>
+              <p>« Le calendrier surprise, c'est génial : un petit mot de moi l'attendait chaque matin pendant 14 jours. Elle m'en parle encore des semaines après ! »</p>
+              <div class="who">
+                <span class="avatar">N</span>
+                <div><b>Nadia</b><span>Calendrier surprise · Montréal</span></div>
+              </div>
+            </article>
+            <article class="review reveal">
+              <div class="stars" aria-label="5 étoiles sur 5">★★★★★</div>
+              <p>« Toute la famille a participé à la carte collective pour l'anniversaire de maman, même ceux qui vivent loin. Simple à créer, magnifique à recevoir. »</p>
+              <div class="who">
+                <span class="avatar">S</span>
+                <div><b>Samuel</b><span>Carte collective · Cap-Haïtien</span></div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ ÉTAPES ============ -->
+      <section class="block" id="creation">
+        <div class="wrap">
+          <div class="sec-head center reveal">
+            <p class="eyebrow">La création</p>
+            <h2>Quelques étapes, et <span class="grad-text">c'est prêt</span></h2>
+          </div>
+          <div class="steps">
+            <article class="step reveal">
+              <div class="step-ico">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4.5" rx="1"/><path d="M5 12.5V21h14v-8.5M12 8v13M12 8s-4.5.2-4.5-2.4C7.5 3.4 12 3.2 12 8zM12 8s4.5.2 4.5-2.4C16.5 3.4 12 3.2 12 8z"/></svg>
+              </div>
+              <p class="step-num">Étape 1</p>
+              <h3>Choisis ton cadeau</h3>
+              <p>Cadeau interactif, calendrier surprise ou carte collective : choisis la surprise qui lui ressemble, et écris-nous sur WhatsApp pour démarrer.</p>
+            </article>
+            <article class="step reveal">
+              <div class="step-ico">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7.5-4.6-9.7-9C.9 7.7 2.6 4.5 5.8 4.5c2 0 3.5 1.1 4.4 2.7l1.8 3.3 1.8-3.3c.9-1.6 2.4-2.7 4.4-2.7 3.2 0 4.9 3.2 3.5 6.5C19.5 15.4 12 20 12 20z" transform="scale(0.92) translate(1 1)"/><path d="M17.5 3.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z"/></svg>
+              </div>
+              <p class="step-num">Étape 2</p>
+              <h3>Personnalise avec tes souvenirs</h3>
+              <p>Tes mots, tes photos, une note vocale ou une vidéo, ta musique : avant de payer, tu vois le résultat. Et tu pourras le modifier après, si tu changes d'avis.</p>
+            </article>
+            <article class="step reveal">
+              <div class="step-ico">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg>
+              </div>
+              <p class="step-num">Étape 3</p>
+              <h3>Partage la surprise</h3>
+              <p>Envoie le lien ou le QR code : la surprise s'ouvre au bon moment, et chaque moment se découvre à son rythme.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ LE CRÉATEUR ============ -->
+      <section class="block alt" id="createur">
+        <div class="wrap">
+          <div class="owner-card reveal">
+            <div class="monogram" aria-hidden="true">
+              <span class="as">AS</span>
+              <span class="llc">ANDY SWIFTT</span>
+            </div>
+            <div>
+              <p class="eyebrow">Le créateur</p>
+              <h2>Andy Swiftt, fondateur &amp; propriétaire</h2>
+              <p>Swiftt Cadeaux est né d'une conviction simple : les plus beaux cadeaux ne sont pas des objets, ce sont des émotions qu'on garde. Andy a créé la marque en Haïti, sous l'entreprise <strong>ANDY SWIFTT LLC</strong>, pour permettre à chacun — où qu'il vive — d'offrir un moment inoubliable à ceux qu'il aime, même à distance.</p>
+              <ul class="owner-facts">
+                <li>Propriétaire : Andy Swiftt</li>
+                <li>Entreprise : ANDY SWIFTT LLC</li>
+                <li>Créé en Haïti</li>
+              </ul>
+            </div>
+            <div class="haiti-badge">
+              <span class="flag" aria-hidden="true"><i style="background:#1d4e9e"></i><i style="background:#d21034"></i></span>
+              <b>Fièrement haïtien</b>
+              <span>Imaginé, conçu et créé en Haïti</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ FAQ ============ -->
+      <section class="block" id="faq">
+        <div class="wrap">
+          <div class="sec-head center reveal">
+            <p class="eyebrow">Questions fréquentes</p>
+            <h2>Tout ce qu'il faut <span class="grad-text">savoir</span></h2>
+          </div>
+          <div class="faq reveal">
+            <div class="faq-item">
+              <button class="faq-q" type="button" aria-expanded="false">Comment la personne reçoit-elle le cadeau ?
+                <svg class="chev" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-a"><p>Deux options : un QR code unique, imprimé sur une jolie carte ou glissé dans un bouquet, ou un lien privé à envoyer par WhatsApp, SMS ou e-mail. La personne scanne ou clique — aucune application à installer, aucun compte à créer — et la surprise s'ouvre.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" type="button" aria-expanded="false">Est-ce que je vois le résultat avant de payer ?
+                <svg class="chev" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-a"><p>Oui. Tu composes ton cadeau et tu le prévisualises exactement comme la personne le découvrira. Tu ne paies que lorsque le résultat te plaît.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" type="button" aria-expanded="false">Et si je me trompe ? Puis-je modifier après l'envoi ?
+                <svg class="chev" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-a"><p>Bien sûr. Une faute dans un prénom, une photo à changer, un mot à ajouter : ton cadeau reste modifiable après le paiement, et le lien ou le QR code ne change pas.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" type="button" aria-expanded="false">Le cadeau est-il vraiment privé ?
+                <svg class="chev" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-a"><p>Oui. Ton cadeau n'est accessible qu'aux personnes qui possèdent le lien ou le QR code. Il n'est ni publié, ni revendu, ni utilisé à des fins publicitaires. Tes photos et tes mots t'appartiennent.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" type="button" aria-expanded="false">Combien de temps pour créer mon cadeau ?
+                <svg class="chev" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-a"><p>Quelques minutes suffisent : écris-nous sur WhatsApp, envoie tes photos et tes mots, et on s'occupe de la mise en forme. Tu valides l'aperçu, tu paies, et ton lien est prêt à offrir.</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ CTA FINAL ============ -->
+      <section class="block" style="padding-top:10px">
+        <div class="wrap">
+          <div class="cta-band reveal">
+            <h2>Offre un moment,<br />pas juste un objet.</h2>
+            <p>Au moment où le couvercle se soulève, l'émotion commence — et chaque souvenir se découvre à son rythme.</p>
+            <button class="btn" type="button" data-open-wizard>Créer ma surprise
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+            <div class="guarantees">
+              <div class="guarantee">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-6.5 10-6.5S22 12 22 12s-3.5 6.5-10 6.5S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+                <div><b>Aperçu avant de payer</b><span>Tu vois le résultat final avant de régler quoi que ce soit.</span></div>
+              </div>
+              <div class="guarantee">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+                <div><b>Commande simple, sans surprise</b><span>Tu commandes sur WhatsApp et tu valides l'aperçu avant de payer. Aucun abonnement caché.</span></div>
+              </div>
+              <div class="guarantee">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7.5-4.6-9.7-9C.9 8.6 2.6 5.4 5.8 5.4c2 0 3.5 1.1 4.4 2.6l1.8 3 1.8-3c.9-1.5 2.4-2.6 4.4-2.6 3.2 0 4.9 3.2 3.5 6.6C19.5 16.4 12 21 12 21z"/></svg>
+                <div><b>Cadeau privé</b><span>Accessible uniquement via ton lien ou ton QR code.</span></div>
+              </div>
+              <div class="guarantee">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+                <div><b>Prêt en quelques minutes</b><span>De l'idée à la surprise, sans attendre des jours.</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="site">
+      <div class="wrap">
+        <div class="foot-grid">
+          <div>
+            <a class="brand" href="#top" aria-label="Swiftt Cadeaux — retour en haut">
+              <svg class="logo-badge" viewBox="0 0 64 64" role="img" aria-label="Logo Swiftt Cadeaux">
+                <defs>
+                  <linearGradient id="lg-foot" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#f0567a"/><stop offset="0.5" stop-color="#c22a7e"/><stop offset="1" stop-color="#7b2d8b"/>
+                  </linearGradient>
+                </defs>
+                <rect width="64" height="64" rx="15" fill="url(#lg-foot)"/>
+                <rect x="14" y="30" width="36" height="22" rx="3.5" fill="#fff"/>
+                <rect x="11.5" y="22.5" width="41" height="9" rx="3.5" fill="#fff"/>
+                <rect x="29" y="22.5" width="6" height="29.5" fill="#f0567a"/>
+                <path d="M32 21c-4.6-1.2-6.4-3.4-6.4-5.6 0-1.9 1.4-3.1 3-3.1 1.9 0 3.4 1.7 3.4 3.9 0-2.2 1.5-3.9 3.4-3.9 1.6 0 3 1.2 3 3.1 0 2.2-1.8 4.4-6.4 5.6z" fill="#fff"/>
+              </svg>
+              <span>
+                <span class="brand-name">Swiftt <span class="c2">Cadeaux</span></span>
+                <span class="brand-sub" style="display:block">by Andy Swiftt · Haïti</span>
+              </span>
+            </a>
+            <p class="foot-about">Des cadeaux numériques personnalisés — mots, photos, musique et souvenirs — à découvrir par QR code ou par lien. Une marque ANDY SWIFTT, imaginée et créée en Haïti.</p>
+          </div>
+          <div>
+            <h4>Nos cadeaux</h4>
+            <ul>
+              <li><a href="#cadeaux">Le cadeau interactif surprise</a></li>
+              <li><a href="#cadeaux">Le calendrier surprise</a></li>
+              <li><a href="#cadeaux">La carte collective</a></li>
+              <li><a href="#demo">Voir la démo</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Découvrir</h4>
+            <ul>
+              <li><a href="#avis">Exemples de retours</a></li>
+              <li><a href="#creation">Comment ça marche</a></li>
+              <li><a href="#createur">Le créateur</a></li>
+              <li><a href="#faq">Questions fréquentes</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Contact &amp; légal</h4>
+            <ul>
+              <li><a href="https://wa.me/18735972113" target="_blank" rel="noopener">WhatsApp — Andy Swiftt</a></li>
+              <li><a href="#faq">Aide / Contact</a></li>
+              <li><a href="#createur">À propos</a></li>
+              <li><a href="#faq">Confidentialité</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="foot-bottom">
+          <span>© 2026 Swiftt Cadeaux · ANDY SWIFTT LLC — Propriétaire : Andy Swiftt</span>
+          <span>Conçu et créé en Haïti, avec le cœur</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ============ CRÉATEUR DE CADEAU (6 ÉTAPES) ============ -->
+    <div class="wz" id="wizard" hidden role="dialog" aria-modal="true" aria-label="Créateur de cadeau en 6 étapes">
+      <div class="wz-shell">
+        <div class="wz-top">
+          <span class="wz-brand">Créateur de cadeau</span>
+          <span class="wz-saved" id="wzSaved">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            <span id="wzSavedTxt">Brouillon enregistré</span>
+          </span>
+          <button class="wz-close" id="wzClose" type="button" aria-label="Fermer le créateur">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+          </button>
+        </div>
+
+        <div class="wz-progress" id="wzProgress" aria-hidden="true"></div>
+        <p class="wz-step-title" id="wzStepTitle">Étape 1/6 — Thème</p>
+
+        <div class="wz-body">
+          <div class="wz-preview-col">
+            <p class="wz-preview-label">Aperçu en direct</p>
+            <div class="wz-phone" aria-label="Aperçu en direct de la première page du cadeau">
+              <div class="wz-screen" id="pvScreen">
+                <p class="pv-title" id="pvTitle">Joyeux anniversaire</p>
+                <p class="pv-msg" id="pvMsg"></p>
+                <div class="pv-env" id="pvEnv"><span class="pv-seal" id="pvSeal">♥</span></div>
+                <p class="pv-hint" id="pvHint"></p>
+                <span class="pv-open" id="pvOpen">Ouvrir</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="wz-main">
+            <!-- ÉTAPE 1 : THÈME -->
+            <section class="wz-step" data-step="1" aria-label="Étape 1 : thème">
+              <div class="wz-card">
+                <h2>Quel thème veux-tu créer ?</h2>
+                <p class="wz-lede">Anniversaire, Cadeau, Fleurs, Date, Parchemin, Pique-nique ou Pardon : choisis la grande expérience que tu veux offrir. Chaque thème recolorise tout ton cadeau.</p>
+                <div class="wz-theme-grid" id="wzThemeGrid"></div>
+                <p class="wz-error" id="errTheme" role="alert" hidden>Choisis un thème pour continuer</p>
+              </div>
+            </section>
+
+            <!-- ÉTAPE 2 : STYLE -->
+            <section class="wz-step" data-step="2" aria-label="Étape 2 : style">
+              <div class="wz-card">
+                <h2 id="wzStyleTitle">Ton univers Anniversaire</h2>
+                <p class="wz-lede">Personnalise la première page : c'est elle que la personne verra avant d'ouvrir son enveloppe.</p>
+                <div class="wz-field">
+                  <label for="fTitle">Titre de la première page</label>
+                  <input class="wz-input" id="fTitle" type="text" maxlength="80" autocomplete="off" />
+                  <p class="wz-error" id="errTitle" role="alert" hidden>Le titre est obligatoire</p>
+                </div>
+                <div class="wz-field">
+                  <label for="fMsg">Petit message de la première page</label>
+                  <input class="wz-input" id="fMsg" type="text" maxlength="140" autocomplete="off" />
+                </div>
+                <div class="wz-field">
+                  <label for="fHint">Indication sous l'enveloppe</label>
+                  <input class="wz-input" id="fHint" type="text" maxlength="140" autocomplete="off" />
+                </div>
+                <div class="wz-colors">
+                  <div>
+                    <label for="cFond">Fond</label>
+                    <input class="wz-color" id="cFond" type="color" />
+                    <span class="wz-color-hex" id="hexFond"></span>
+                  </div>
+                  <div>
+                    <label for="cA1">Accent principal</label>
+                    <input class="wz-color" id="cA1" type="color" />
+                    <span class="wz-color-hex" id="hexA1"></span>
+                  </div>
+                  <div>
+                    <label for="cA2">Accent secondaire</label>
+                    <input class="wz-color" id="cA2" type="color" />
+                    <span class="wz-color-hex" id="hexA2"></span>
+                  </div>
+                </div>
+                <div class="wz-field" style="margin-top:16px">
+                  <label for="fFont">Police du titre</label>
+                  <select class="wz-select" id="fFont">
+                    <option value="fraunces">Fraunces — serif élégant</option>
+                    <option value="playfair">Playfair Display — raffiné</option>
+                    <option value="caveat">Caveat — manuscrite</option>
+                    <option value="nunito">Nunito Sans — ronde et douce</option>
+                  </select>
+                </div>
+                <div class="wz-field" style="margin-bottom:4px">
+                  <label for="fLang">Langue du cadeau</label>
+                  <select class="wz-select" id="fLang">
+                    <option value="fr">Français</option>
+                    <option value="ht">Kréyòl</option>
+                  </select>
+                  <p class="wz-hint-note">Langue des textes système du cadeau (Ouvrir, Continuer…). Tes textes à toi ne sont jamais traduits.</p>
+                </div>
+              </div>
+            </section>
+
+            <!-- ÉTAPE 3 : HISTOIRE -->
+            <section class="wz-step" data-step="3" aria-label="Étape 3 : histoire">
+              <div class="wz-card">
+                <h2>Compose ton histoire</h2>
+                <p class="wz-lede">Ajoute les sections qui te ressemblent, remplis ce qui compte, retire le reste. Remplis au moins un contenu pour continuer — l'émotion, elle, est incluse.</p>
+                <div id="wzBlocks"></div>
+                <p class="wz-group-label">Ajouter une section</p>
+                <div class="wz-add-grid" id="wzAddGrid"></div>
+                <p class="wz-error" id="errStory" role="alert" hidden>Ajoute au moins un contenu à ton histoire</p>
+              </div>
+            </section>
+
+            <!-- ÉTAPE 4 : OUVERTURE -->
+            <section class="wz-step" data-step="4" aria-label="Étape 4 : l'ouverture">
+              <div class="wz-card">
+                <h2>Comment veux-tu que la surprise soit découverte ?</h2>
+                <p class="wz-group-label">Protection</p>
+                <button class="wz-opt" type="button" data-prot="none" aria-pressed="true">
+                  <span class="dot" aria-hidden="true"></span>
+                  <span><b>Sans secret</b><span class="txt">Le cadeau s'ouvre directement.</span></span>
+                </button>
+                <button class="wz-opt" type="button" data-prot="secret" aria-pressed="false">
+                  <span class="dot" aria-hidden="true"></span>
+                  <span><b>Mot secret</b><span class="txt">La personne doit deviner un mot — le plus émouvant.</span></span>
+                </button>
+                <div class="wz-field" id="secretWrap" hidden>
+                  <label for="fSecret">Le mot secret à deviner</label>
+                  <input class="wz-input" id="fSecret" type="text" maxlength="40" autocomplete="off" placeholder="Ex. : le prénom de votre chanson…" />
+                  <p class="wz-error" id="errSecret" role="alert" hidden>Le mot secret est obligatoire</p>
+                </div>
+                <p class="wz-group-label">Disponibilité</p>
+                <button class="wz-opt" type="button" data-avail="now" aria-pressed="true">
+                  <span class="dot" aria-hidden="true"></span>
+                  <span><b>Ouvrable maintenant</b><span class="txt">La personne peut l'ouvrir dès qu'elle reçoit le lien ou scanne le QR.</span></span>
+                </button>
+                <button class="wz-opt" type="button" data-avail="date" aria-pressed="false">
+                  <span class="dot" aria-hidden="true"></span>
+                  <span><b>À partir d'une date</b><span class="txt">Verrouillé jusqu'au jour et à l'heure choisis.</span></span>
+                </button>
+                <div id="availWrap" hidden>
+                  <div class="wz-field">
+                    <label for="fAvailDate">Date d'ouverture</label>
+                    <input class="wz-input" id="fAvailDate" type="date" />
+                    <p class="wz-error" id="errDate" role="alert" hidden>La date d'ouverture est obligatoire</p>
+                  </div>
+                  <div class="wz-field" style="margin-bottom:4px">
+                    <label for="fAvailTime">Heure d'ouverture</label>
+                    <input class="wz-input" id="fAvailTime" type="time" />
+                    <p class="wz-error" id="errTime" role="alert" hidden>L'heure d'ouverture est obligatoire</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- ÉTAPE 5 : APERÇU -->
+            <section class="wz-step" data-step="5" aria-label="Étape 5 : aperçu">
+              <div class="wz-card">
+                <h2>Ton cadeau, comme elle le découvrira</h2>
+                <p class="wz-lede">Voici le récapitulatif complet de ta création. L'aperçu en direct montre la première page, telle qu'elle apparaîtra.</p>
+                <dl class="wz-recap" id="wzRecap"></dl>
+                <p class="wz-hint-note">Tout est bon ? Passe à la dernière étape. Tu pourras encore tout corriger avec Andy sur WhatsApp.</p>
+              </div>
+            </section>
+
+            <!-- ÉTAPE 6 : FINALISER -->
+            <section class="wz-step" data-step="6" aria-label="Étape 6 : finaliser">
+              <div class="wz-card">
+                <h2>Finaliser avec Andy</h2>
+                <p class="wz-lede" id="wzFinalIntro">Ta création est prête. La dernière étape se fait en personne, avec Andy, sur WhatsApp.</p>
+                <p style="font-size:0.96rem;line-height:1.6;margin:0 0 12px">Quand tu envoies ta création, Andy reçoit <strong>tout ton brief</strong> : thème, style, textes, contenus et réglages d'ouverture. Il relit tout avec toi, puis <strong>crée personnellement ton cadeau</strong> et t'envoie <strong>ton lien personnel et ton QR code</strong>, prêts à offrir.</p>
+                <p class="wz-group-label">Ta formule</p>
+                <button class="wz-opt" type="button" data-plan="interactif" aria-pressed="true">
+                  <span class="dot" aria-hidden="true"></span>
+                  <span><b>Le cadeau interactif surprise — 500 G</b><span class="txt">La surprise complète créée avec ce créateur : textes, photos, musique et souvenirs.</span></span>
+                </button>
+                <button class="wz-opt" type="button" data-plan="calendrier" aria-pressed="false">
+                  <span class="dot" aria-hidden="true"></span>
+                  <span><b>Le calendrier surprise — 1 000 G</b><span class="txt">Un message à ouvrir chaque jour : 7, 14 ou 30 jours d'émotion en douceur.</span></span>
+                </button>
+                <button class="wz-opt" type="button" data-plan="collective" aria-pressed="false">
+                  <span class="dot" aria-hidden="true"></span>
+                  <span><b>La carte collective — 1 000 G</b><span class="txt">Famille, amis, collègues : chacun ajoute son mot, sa photo ou son emoji.</span></span>
+                </button>
+                <div class="wz-pay">
+                  <h3>Paiement</h3>
+                  <p>Paie ta formule (<b id="wzPayAmount">500 G</b>) via l'un de ces deux moyens :</p>
+                  <div class="wz-pay-row">
+                    <b>MonCash</b>
+                    <span>+509 34 97 9011</span>
+                    <span>Nom : Faub*** Fabio***</span>
+                  </div>
+                  <div class="wz-pay-row">
+                    <b>Binance</b>
+                    <span>Pay ID : 1253095098</span>
+                    <span>Email : 4ndysuperman@gmail.com</span>
+                  </div>
+                  <p>Ensuite, clique sur le bouton WhatsApp ci-dessous pour envoyer à Andy ta configuration <strong>et ta preuve de paiement</strong> (capture d'écran). Andy valide ta commande <strong>manuellement</strong> dès qu'il reçoit ta preuve : ici, rien n'est généré automatiquement et il n'y a <strong>aucun paiement automatique en ligne</strong>. Pense aussi à lui envoyer tes photos et ta note vocale dans la conversation, pour qu'il les intègre au cadeau.</p>
+                  <div class="wz-callout" role="note">
+                    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#eec27f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.4 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.2-9.19a4 4 0 1 1 5.65 5.66l-9.19 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+                    <span><b>Important :</b> si tu as ajouté des <b>photos</b> ou une <b>note vocale</b> à ton cadeau, envoie-les aussi <b>en pièces jointes</b> dans la conversation WhatsApp — elles ne partent pas automatiquement avec ce message.</span>
+                  </div>
+                </div>
+                <a class="wz-wa-btn" id="wzWaBtn" href="https://wa.me/18735972113" target="_blank" rel="noopener">
+                  <svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4 0-.5.2-.7l.5-.6c.1-.2.1-.4 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1.1 2.7c.1.2 1.9 2.9 4.6 4 .6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.5-.3z"/></svg>
+                  Envoyer ma création sur WhatsApp
+                </a>
+                <p class="wz-hint-note" style="text-align:center">Le message est déjà rempli avec toute ta configuration et ta formule — joins-y ta capture d'écran de paiement avant de l'envoyer.</p>
+              </div>
+            </section>
+          </div>
+        </div>
+
+        <div class="wz-nav">
+          <button class="wz-btn-prev" id="wzPrev" type="button">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+            Précédent
+          </button>
+          <button class="wz-btn-next" id="wzNext" type="button">
+            Suivant
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Modale : fermeture -->
+      <div class="wz-modal" id="wzCloseModal" hidden>
+        <div class="wz-modal-card">
+          <h3>Tu reprends plus tard ?</h3>
+          <p>Ton brouillon est enregistré sur cet appareil : quand tu reviendras, tu pourras reprendre ta création exactement où tu l'as laissée.</p>
+          <div class="wz-modal-actions">
+            <button class="wz-btn-next" id="wzStay" type="button">Continuer ma création</button>
+            <button class="wz-modal-ghost" id="wzQuit" type="button">Fermer le créateur</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modale : reprise du brouillon -->
+      <div class="wz-modal" id="wzResumeModal" hidden>
+        <div class="wz-modal-card">
+          <h3>Un brouillon t'attend</h3>
+          <p>Tu avais commencé un cadeau sur cet appareil. Tu veux reprendre là où tu t'étais arrêté, ou repartir de zéro ?</p>
+          <div class="wz-modal-actions">
+            <button class="wz-btn-next" id="wzResume" type="button">Reprendre mon brouillon</button>
+            <button class="wz-modal-ghost" id="wzRestart" type="button">Recommencer à zéro</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        "use strict";
+        var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        /* ---------- Onglets du téléphone ---------- */
+        var tabs = Array.prototype.slice.call(document.querySelectorAll(".tab"));
+        tabs.forEach(function (tab) {
+          tab.addEventListener("click", function () {
+            tabs.forEach(function (t) {
+              var on = t === tab;
+              t.setAttribute("aria-selected", on ? "true" : "false");
+              document.getElementById(t.getAttribute("data-screen")).classList.toggle("active", on);
+            });
+          });
+        });
+
+        /* ---------- Calendrier surprise ---------- */
+        var calMessages = [
+          "Jour 1 — Tout commence par un sourire : le tien, quand tu ouvriras cette première case.",
+          "Jour 2 — Une pensée pour toi : merci d'être exactement la personne que tu es.",
+          "Jour 3 — Souviens-toi de notre première rencontre… je m'en souviens comme si c'était hier.",
+          "Jour 4 — Devine quoi ? Quelqu'un, quelque part, pense très fort à toi en ce moment.",
+          "Jour 5 — Aujourd'hui, je te souhaite une journée aussi douce que ton rire.",
+          "Jour 6 — Petit défi : appelle la personne qui te manque le plus. Elle attend peut-être ça.",
+          "Jour 7 — Une semaine de petits mots… et ce n'est que le début. Je t'aime."
+        ];
+        var calGrid = document.getElementById("calGrid");
+        var calMsg = document.getElementById("calMsg");
+        calMessages.forEach(function (msg, i) {
+          var b = document.createElement("button");
+          b.type = "button";
+          b.className = "cal-day";
+          b.textContent = String(i + 1);
+          b.setAttribute("aria-label", "Ouvrir le jour " + (i + 1));
+          b.addEventListener("click", function () {
+            b.classList.add("opened");
+            b.textContent = "♥";
+            calMsg.innerHTML = "";
+            var strong = document.createElement("strong");
+            strong.textContent = "Jour " + (i + 1) + " débloqué";
+            calMsg.appendChild(strong);
+            calMsg.appendChild(document.createTextNode(msg.replace(/^Jour \d+ — /, "")));
+          });
+          calGrid.appendChild(b);
+        });
+
+        /* ---------- Démo : ouverture du coffret ---------- */
+        var stage = document.getElementById("demoStage");
+        var openBtn = document.getElementById("openBtn");
+        var replayBtn = document.getElementById("replayBtn");
+        var giftBox = document.getElementById("giftBox");
+
+        function burstHearts() {
+          if (reduced) return;
+          var rect = giftBox.getBoundingClientRect();
+          var srect = stage.getBoundingClientRect();
+          var cx = rect.left - srect.left + rect.width / 2;
+          var cy = rect.top - srect.top + 30;
+          var colors = ["#e0447c", "#f0567a", "#c22a7e", "#7b2d8b", "#e9a13b"];
+          for (var i = 0; i < 16; i++) {
+            var s = document.createElement("span");
+            s.className = "burst-heart";
+            var size = 11 + Math.random() * 13;
+            s.innerHTML = '<svg width="' + size + '" height="' + size + '" viewBox="0 0 24 24" fill="' + colors[i % colors.length] + '"><path d="M12 21s-7.5-4.7-10-9.3C.4 8.6 2.2 5 5.7 5c2 0 3.4 1.1 4.3 2.4l2 3 2-3C14.9 6.1 16.3 5 18.3 5c3.5 0 5.3 3.6 3.7 6.7C19.5 16.3 12 21 12 21z"/></svg>';
+            s.style.left = cx + "px";
+            s.style.top = cy + "px";
+            var ang = (Math.PI * 2 * i) / 16 + Math.random() * 0.5;
+            var dist = 90 + Math.random() * 130;
+            s.style.setProperty("--dx", Math.cos(ang) * dist + "px");
+            s.style.setProperty("--dy", (Math.sin(ang) * dist - 60) + "px");
+            s.style.setProperty("--rot", (Math.random() * 160 - 80) + "deg");
+            stage.appendChild(s);
+            (function (el) { setTimeout(function () { el.remove(); }, 1300); })(s);
+          }
+        }
+
+        openBtn.addEventListener("click", function () {
+          stage.classList.add("opened");
+          burstHearts();
+        });
+        replayBtn.addEventListener("click", function () {
+          stopMusic();
+          stage.classList.remove("opened");
+          stage.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "center" });
+        });
+
+        /* ---------- Mélodie boîte à musique (WebAudio) ---------- */
+        var actx = null, playing = false, timer = null, step = 0;
+        var musicBtn = document.getElementById("musicBtn");
+        var musicRow = document.getElementById("musicRow");
+        var icoPlay = document.getElementById("musicIcoPlay");
+        var icoPause = document.getElementById("musicIcoPause");
+        /* Mélodie douce originale, gamme de do majeur */
+        var melody = [523.25, 659.25, 783.99, 1046.5, 783.99, 659.25, 587.33, 659.25,
+                      523.25, 587.33, 659.25, 783.99, 659.25, 587.33, 523.25, 0,
+                      440.0, 523.25, 587.33, 659.25, 587.33, 523.25, 440.0, 392.0,
+                      523.25, 659.25, 783.99, 659.25, 587.33, 523.25, 0, 0];
+        function playNote(freq, when) {
+          if (!freq) return;
+          var osc = actx.createOscillator();
+          var gain = actx.createGain();
+          osc.type = "sine";
+          osc.frequency.value = freq;
+          var harm = actx.createOscillator();
+          var harmGain = actx.createGain();
+          harm.type = "sine";
+          harm.frequency.value = freq * 2;
+          harmGain.gain.value = 0.18;
+          gain.gain.setValueAtTime(0.0001, when);
+          gain.gain.exponentialRampToValueAtTime(0.22, when + 0.02);
+          gain.gain.exponentialRampToValueAtTime(0.0001, when + 0.55);
+          osc.connect(gain); harm.connect(harmGain); harmGain.connect(gain);
+          gain.connect(actx.destination);
+          osc.start(when); harm.start(when);
+          osc.stop(when + 0.6); harm.stop(when + 0.6);
+        }
+        function schedule() {
+          if (!playing) return;
+          playNote(melody[step % melody.length], actx.currentTime + 0.03);
+          step++;
+          timer = setTimeout(schedule, 340);
+        }
+        function stopMusic() {
+          playing = false;
+          if (timer) clearTimeout(timer);
+          timer = null;
+          musicRow.classList.remove("playing");
+          icoPlay.style.display = "";
+          icoPause.style.display = "none";
+          musicBtn.setAttribute("aria-label", "Écouter la mélodie de la démo");
+        }
+        musicBtn.addEventListener("click", function () {
+          if (playing) { stopMusic(); return; }
+          if (!actx) {
+            var AC = window.AudioContext || window.webkitAudioContext;
+            if (!AC) return;
+            actx = new AC();
+          }
+          if (actx.state === "suspended") actx.resume();
+          playing = true;
+          step = 0;
+          musicRow.classList.add("playing");
+          icoPlay.style.display = "none";
+          icoPause.style.display = "";
+          musicBtn.setAttribute("aria-label", "Mettre la mélodie en pause");
+          schedule();
+        });
+
+        /* ---------- FAQ accordéon ---------- */
+        document.querySelectorAll(".faq-item").forEach(function (item) {
+          var q = item.querySelector(".faq-q");
+          var a = item.querySelector(".faq-a");
+          q.addEventListener("click", function () {
+            var isOpen = item.classList.contains("open");
+            document.querySelectorAll(".faq-item.open").forEach(function (other) {
+              other.classList.remove("open");
+              other.querySelector(".faq-a").style.maxHeight = "0px";
+              other.querySelector(".faq-q").setAttribute("aria-expanded", "false");
+            });
+            if (!isOpen) {
+              item.classList.add("open");
+              a.style.maxHeight = a.scrollHeight + "px";
+              q.setAttribute("aria-expanded", "true");
+            }
+          });
+        });
+
+        /* ---------- Révélation au scroll ---------- */
+        var revealEls = document.querySelectorAll(".reveal");
+        if ("IntersectionObserver" in window && !reduced) {
+          var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+              if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+            });
+          }, { threshold: 0.12 });
+          revealEls.forEach(function (el) { io.observe(el); });
+        } else {
+          revealEls.forEach(function (el) { el.classList.add("in"); });
+        }
+      })();
+    </script>
+
+    <script>
+      (function () {
+        "use strict";
+
+        var WA_BASE = "https://wa.me/18735972113";
+        var DRAFT_KEY = "swifttCadeauxDraftV1";
+
+        /* ---------- Thèmes ---------- */
+        var THEMES = {
+          anniversaire: {
+            name: "Anniversaire", desc: "Une surprise bordeaux à dérouler",
+            css: { bg: "#40091d", panel: "#57122a", field: "rgba(0,0,0,0.22)", line: "rgba(255,255,255,0.16)", accent: "#d92b4f", accent2: "#eec27f", ink: "#fdf3e7", soft: "#e8c9cf" },
+            pv: { fond: "#57122a", a1: "#d92b4f", a2: "#eec27f" },
+            title: "Joyeux anniversaire", message: "Une surprise a été préparée rien que pour toi…", hint: "Touche l'enveloppe pour découvrir ta surprise…",
+            icon: '<svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21h16M5 21v-5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v5M5 17c1.5 1.2 3-1.2 4.5 0s3-1.2 4.5 0 3-1.2 5 0M8 10v4M12 10v4M16 10v4M8 10a1.6 1.6 0 1 0 0-.01M12 10a1.6 1.6 0 1 0 0-.01M16 10a1.6 1.6 0 1 0 0-.01M8 6.5V8M12 6.5V8M16 6.5V8"/></svg>'
+          },
+          cadeau: {
+            name: "Cadeau", desc: "Amour, famille, amitié ou autre occasion",
+            css: { bg: "#2a0f2e", panel: "#3d173f", field: "rgba(0,0,0,0.22)", line: "rgba(255,255,255,0.16)", accent: "#f0567a", accent2: "#c77fc9", ink: "#fdf0f4", soft: "#e3c3d4" },
+            pv: { fond: "#4a1458", a1: "#f0567a", a2: "#eec27f" },
+            title: "Un cadeau pour toi", message: "Quelqu'un a préparé une surprise rien que pour toi…", hint: "Touche l'enveloppe pour découvrir ta surprise…",
+            icon: '<svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4.5" rx="1"/><path d="M5 12.5V21h14v-8.5M12 8v13M12 8s-4.5.2-4.5-2.4C7.5 3.4 12 3.2 12 8zM12 8s4.5.2 4.5-2.4C16.5 3.4 12 3.2 12 8z"/></svg>'
+          },
+          fleurs: {
+            name: "Fleurs", desc: "Un jardin secret rempli de souvenirs",
+            css: { bg: "#2f1620", panel: "#452231", field: "rgba(0,0,0,0.22)", line: "rgba(255,255,255,0.16)", accent: "#f28bab", accent2: "#8fce7e", ink: "#fdf2f0", soft: "#e6c6cb" },
+            pv: { fond: "#452231", a1: "#f28bab", a2: "#8fce7e" },
+            title: "Un jardin de mots pour toi", message: "Des fleurs qui ne fanent jamais, et des mots qui restent…", hint: "Touche l'enveloppe pour découvrir ta surprise…",
+            icon: '<svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="1.8"/><circle cx="12" cy="4.6" r="2.1"/><circle cx="16.2" cy="7.4" r="2.1"/><circle cx="15" cy="11.8" r="2.1"/><circle cx="9" cy="11.8" r="2.1"/><circle cx="7.8" cy="7.4" r="2.1"/><path d="M12 13.5V21M12 17c-2 0-3.2-.9-3.8-2.4C10 14.5 11.4 15.4 12 17zM12 15.4c.6-1.5 2-2.4 3.8-2.4-.6 1.5-1.8 2.4-3.8 2.4z"/></svg>'
+          },
+          date: {
+            name: "Date", desc: "Une soirée romantique à découvrir",
+            css: { bg: "#26040a", panel: "#3d0810", field: "rgba(0,0,0,0.25)", line: "rgba(255,255,255,0.15)", accent: "#c01430", accent2: "#e9a13b", ink: "#fdf1e9", soft: "#e0bfb4" },
+            pv: { fond: "#3d0810", a1: "#c01430", a2: "#e9a13b" },
+            title: "Une soirée rien que pour nous", message: "Un moment à deux, préparé avec le cœur…", hint: "Touche l'enveloppe pour découvrir ta surprise…",
+            icon: '<svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.5S4.8 16.3 3 12.6C1.8 10.1 3.4 7 6.2 7c1.9 0 3.3 1 4.2 2.4l1.6 2.6 1.6-2.6C14.5 8 15.9 7 17.8 7c2.8 0 4.4 3.1 3.2 5.6C19.2 16.3 12 20.5 12 20.5z"/><path d="M18.5 3l.5 1.5L20.5 5l-1.5.5L18.5 7l-.5-1.5L16.5 5l1.5-.5z"/></svg>'
+          },
+          parchemin: {
+            name: "Parchemin", desc: "Une correspondance à dérouler",
+            css: { bg: "#efe3cb", panel: "#fbf4e3", field: "rgba(255,255,255,0.55)", line: "#dcc7a2", accent: "#8a5a2b", accent2: "#b3853f", ink: "#43301b", soft: "#7d6248" },
+            pv: { fond: "#f7ecd7", a1: "#8a5a2b", a2: "#b3853f" },
+            title: "Une lettre pour toi", message: "Des mots écrits à la main, rien que pour toi…", hint: "Touche l'enveloppe pour découvrir ta surprise…",
+            icon: '<svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H8M8 4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2M8 4v16M11.5 9h5M11.5 13h5M11.5 17h3"/></svg>'
+          },
+          pique: {
+            name: "Pique-nique", desc: "Une nappe remplie de souvenirs",
+            css: { bg: "#1d2a16", panel: "#2b3d20", field: "rgba(0,0,0,0.22)", line: "rgba(255,255,255,0.16)", accent: "#d96f4e", accent2: "#9cc184", ink: "#f4f7ec", soft: "#c3d2b2" },
+            pv: { fond: "#2b3d20", a1: "#d96f4e", a2: "#9cc184" },
+            title: "Un moment à savourer", message: "Installe-toi, la nappe est dressée et les souvenirs aussi…", hint: "Touche l'enveloppe pour découvrir ta surprise…",
+            icon: '<svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 11h17l-1.7 7.6a2 2 0 0 1-2 1.6H7.2a2 2 0 0 1-2-1.6L3.5 11zM3.5 11c1.8-3.8 4.9-5.7 8.5-5.7s6.7 1.9 8.5 5.7M9 14.8v2.6M15 14.8v2.6M8.5 5.6C8.5 4 10 3 12 3s3.5 1 3.5 2.6"/></svg>'
+          },
+          pardon: {
+            name: "Pardon", desc: "Pour se faire pardonner, avec sincérité",
+            css: { bg: "#1a2140", panel: "#263059", field: "rgba(0,0,0,0.22)", line: "rgba(255,255,255,0.16)", accent: "#8fa3e8", accent2: "#c3b2ec", ink: "#f0f1fd", soft: "#c2c8e6" },
+            pv: { fond: "#263059", a1: "#8fa3e8", a2: "#c3b2ec" },
+            title: "Pardonne-moi", message: "Ces mots viennent du fond du cœur, sincèrement…", hint: "Touche l'enveloppe pour découvrir ta surprise…",
+            icon: '<svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.5S4.8 16.3 3 12.6C1.8 10.1 3.4 7 6.2 7c1.9 0 3.3 1 4.2 2.4l1.6 2.6 1.6-2.6C14.5 8 15.9 7 17.8 7c2.8 0 4.4 3.1 3.2 5.6C19.2 16.3 12 20.5 12 20.5z"/><path d="M7.5 12.5l3 3 5.5-6"/></svg>'
+          }
+        };
+        var THEME_ORDER = ["anniversaire", "cadeau", "fleurs", "date", "parchemin", "pique", "pardon"];
+
+        var FONTS = {
+          fraunces: { label: "Fraunces", css: '"Fraunces", Georgia, serif' },
+          playfair: { label: "Playfair Display", css: '"Playfair Display", Georgia, serif' },
+          caveat: { label: "Caveat", css: '"Caveat", cursive' },
+          nunito: { label: "Nunito Sans", css: '"Nunito Sans", sans-serif' }
+        };
+        var SYS_TEXT = {
+          fr: { open: "Ouvrir", cont: "Continuer" },
+          ht: { open: "Louvri", cont: "Kontinye" }
+        };
+        var BLOCK_LABELS = {
+          mots: "Tes mots", galerie: "Galerie de photos", moments: "Moments importants",
+          raisons: "Les petites raisons", compteur: "Compteur", vocal: "Note vocale",
+          question: "Question surprise", musique: "Musique d'ambiance", finale: "Grande finale"
+        };
+        var PLANS = {
+          interactif: { name: "Le cadeau interactif surprise", price: "500 G" },
+          calendrier: { name: "Le calendrier surprise", price: "1 000 G" },
+          collective: { name: "La carte collective", price: "1 000 G" }
+        };
+
+        /* ---------- État ---------- */
+        var blockSeq = 0;
+        function newBlock(type) {
+          blockSeq++;
+          var b = { id: "b" + blockSeq, type: type };
+          if (type === "mots") { b.text = ""; b.photo = null; }
+          else if (type === "galerie") { b.photos = []; }
+          else if (type === "moments") { b.items = [{ titre: "", date: "", texte: "" }]; }
+          else if (type === "raisons") { b.items = [""]; }
+          else if (type === "compteur") { b.mode = "avant"; b.titre = ""; b.date = ""; }
+          else if (type === "vocal") { b.audio = null; }
+          else if (type === "question") { b.q = ""; b.answers = ["", "", "", ""]; b.correct = 0; }
+          else if (type === "musique") { b.url = ""; }
+          else if (type === "finale") { b.message = ""; b.signature = ""; }
+          return b;
+        }
+        function freshState(themeId) {
+          var t = THEMES[themeId] || THEMES.anniversaire;
+          return {
+            theme: themeId || "anniversaire",
+            style: { title: t.title, message: t.message, hint: t.hint, fond: t.pv.fond, a1: t.pv.a1, a2: t.pv.a2, font: "fraunces", lang: "fr" },
+            blocks: [newBlock("mots"), newBlock("raisons"), newBlock("finale")],
+            opening: { protection: "none", secret: "", avail: "now", date: "", time: "" },
+            themePicked: false,
+            plan: "interactif"
+          };
+        }
+        var state = freshState("anniversaire");
+        var step = 1;
+        var draftDecided = false;
+        var pendingDraft = null;
+
+        /* ---------- Stockage sûr ---------- */
+        var store = {
+          get: function (k) { try { return window.localStorage.getItem(k); } catch (e) { return null; } },
+          set: function (k, v) { try { window.localStorage.setItem(k, v); return true; } catch (e) { return false; } },
+          del: function (k) { try { window.localStorage.removeItem(k); } catch (e) { /* stockage indisponible */ } }
+        };
+
+        /* ---------- Références DOM ---------- */
+        function $(id) { return document.getElementById(id); }
+        var wizard = $("wizard"), wzSaved = $("wzSaved"), wzSavedTxt = $("wzSavedTxt");
+        var pvScreen = $("pvScreen"), pvTitle = $("pvTitle"), pvMsg = $("pvMsg"),
+            pvEnv = $("pvEnv"), pvSeal = $("pvSeal"), pvHint = $("pvHint"), pvOpen = $("pvOpen");
+        var fTitle = $("fTitle"), fMsg = $("fMsg"), fHint = $("fHint"),
+            cFond = $("cFond"), cA1 = $("cA1"), cA2 = $("cA2"),
+            fFont = $("fFont"), fLang = $("fLang");
+        var wzBlocks = $("wzBlocks");
+
+        function esc(s) {
+          return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+        }
+        function cut(s, n) {
+          s = String(s || "").trim();
+          return s.length > n ? s.slice(0, n).trim() + "…" : s;
+        }
+        function lum(hex) {
+          var h = String(hex || "").replace("#", "");
+          if (h.length !== 6) return 0;
+          var r = parseInt(h.slice(0, 2), 16), g = parseInt(h.slice(2, 4), 16), b = parseInt(h.slice(4, 6), 16);
+          return (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+        }
+
+        /* ---------- Sauvegarde du brouillon ---------- */
+        var saveTimer = null;
+        function showSaved(txt) {
+          wzSavedTxt.textContent = txt;
+          wzSaved.classList.add("show");
+        }
+        function saveDraft() {
+          var payload;
+          try { payload = JSON.stringify(state); } catch (e) { return; }
+          if (store.set(DRAFT_KEY, payload)) { showSaved("Brouillon enregistré"); return; }
+          /* localStorage plein : on réessaie sans les données des photos */
+          try {
+            var light = JSON.parse(payload);
+            light.blocks.forEach(function (b) {
+              if (b.photo) b.photo = { name: b.photo.name, data: null };
+              if (b.photos) b.photos = b.photos.map(function (p) { return { name: p.name, data: null }; });
+            });
+            if (store.set(DRAFT_KEY, JSON.stringify(light))) {
+              showSaved("Brouillon enregistré (sans les photos : espace plein)");
+              return;
+            }
+          } catch (e) { /* on garde le brouillon en mémoire */ }
+          showSaved("Brouillon gardé en mémoire (espace plein)");
+        }
+        function saveSoon() {
+          if (saveTimer) clearTimeout(saveTimer);
+          saveTimer = setTimeout(saveDraft, 300);
+        }
+
+        /* ---------- Aperçu en direct ---------- */
+        function updatePreview() {
+          var s = state.style;
+          var ink = lum(s.fond) > 0.62 ? "#40222f" : "#fff8ee";
+          pvScreen.style.background = s.fond;
+          pvScreen.style.color = ink;
+          pvTitle.textContent = s.title || THEMES[state.theme].title;
+          pvTitle.style.fontFamily = (FONTS[s.font] || FONTS.fraunces).css;
+          pvMsg.textContent = s.message || "";
+          pvHint.textContent = s.hint || "";
+          pvEnv.style.background = "linear-gradient(150deg, " + s.a1 + ", " + s.fond + ")";
+          pvSeal.style.background = s.a2;
+          pvSeal.style.color = lum(s.a2) > 0.55 ? "#40222f" : "#fff8ee";
+          pvOpen.textContent = (SYS_TEXT[s.lang] || SYS_TEXT.fr).open;
+        }
+
+        function touch() {
+          updatePreview();
+          saveSoon();
+          refreshValidation();
+          if (step === 5) renderRecap();
+          if (step === 6) renderFinalLink();
+        }
+
+        /* ---------- Thèmes : cartes + application ---------- */
+        function themeDefaults(t) {
+          return { title: t.title, message: t.message, hint: t.hint, fond: t.pv.fond, a1: t.pv.a1, a2: t.pv.a2 };
+        }
+        function buildThemeCards() {
+          var grid = $("wzThemeGrid");
+          grid.innerHTML = "";
+          THEME_ORDER.forEach(function (id, idx) {
+            var t = THEMES[id];
+            var btn = document.createElement("button");
+            btn.type = "button";
+            btn.className = "wz-theme-card" + (idx === THEME_ORDER.length - 1 ? " wide" : "");
+            btn.setAttribute("data-theme", id);
+            btn.setAttribute("aria-pressed", state.themePicked && state.theme === id ? "true" : "false");
+            btn.innerHTML =
+              '<span class="wz-theme-ico" style="background:' + t.pv.a1 + ';color:' + (lum(t.pv.a1) > 0.62 ? "#40222f" : "#fff") + '">' + t.icon + "</span>" +
+              "<b>" + esc(t.name) + "</b>" +
+              '<span class="desc">' + esc(t.desc) + "</span>" +
+              '<span class="wz-swatches"><i style="background:' + t.pv.fond + '"></i><i style="background:' + t.pv.a1 + '"></i><i style="background:' + t.pv.a2 + '"></i></span>';
+            btn.addEventListener("click", function () { setTheme(id); });
+            grid.appendChild(btn);
+          });
+        }
+        function markThemeCards() {
+          Array.prototype.forEach.call(document.querySelectorAll(".wz-theme-card"), function (c) {
+            c.setAttribute("aria-pressed", state.themePicked && c.getAttribute("data-theme") === state.theme ? "true" : "false");
+          });
+        }
+        function applyThemeVars() {
+          var c = THEMES[state.theme].css;
+          wizard.style.setProperty("--wz-bg", c.bg);
+          wizard.style.setProperty("--wz-panel", c.panel);
+          wizard.style.setProperty("--wz-field", c.field);
+          wizard.style.setProperty("--wz-line", c.line);
+          wizard.style.setProperty("--wz-accent", c.accent);
+          wizard.style.setProperty("--wz-accent2", c.accent2);
+          wizard.style.setProperty("--wz-ink", c.ink);
+          wizard.style.setProperty("--wz-soft", c.soft);
+          $("wzStyleTitle").textContent = "Ton univers " + THEMES[state.theme].name;
+        }
+        function setTheme(id) {
+          if (!THEMES[id]) return;
+          var old = themeDefaults(THEMES[state.theme]);
+          var nw = themeDefaults(THEMES[id]);
+          var s = state.style;
+          ["title", "message", "hint", "fond", "a1", "a2"].forEach(function (k) {
+            if (!s[k] || s[k] === old[k]) s[k] = nw[k];
+          });
+          state.theme = id;
+          state.themePicked = true;
+          applyThemeVars();
+          markThemeCards();
+          syncStyleInputs();
+          touch();
+        }
+
+        /* ---------- Étape 2 : style ---------- */
+        function syncStyleInputs() {
+          var s = state.style;
+          fTitle.value = s.title; fMsg.value = s.message; fHint.value = s.hint;
+          cFond.value = s.fond; cA1.value = s.a1; cA2.value = s.a2;
+          $("hexFond").textContent = s.fond; $("hexA1").textContent = s.a1; $("hexA2").textContent = s.a2;
+          fFont.value = s.font; fLang.value = s.lang;
+        }
+        fTitle.addEventListener("input", function () { state.style.title = fTitle.value; touch(); });
+        fMsg.addEventListener("input", function () { state.style.message = fMsg.value; touch(); });
+        fHint.addEventListener("input", function () { state.style.hint = fHint.value; touch(); });
+        cFond.addEventListener("input", function () { state.style.fond = cFond.value; $("hexFond").textContent = cFond.value; touch(); });
+        cA1.addEventListener("input", function () { state.style.a1 = cA1.value; $("hexA1").textContent = cA1.value; touch(); });
+        cA2.addEventListener("input", function () { state.style.a2 = cA2.value; $("hexA2").textContent = cA2.value; touch(); });
+        fFont.addEventListener("change", function () { state.style.font = fFont.value; touch(); });
+        fLang.addEventListener("change", function () { state.style.lang = fLang.value; touch(); });
+
+        /* ---------- Étape 3 : blocs dynamiques ---------- */
+        function buildAddMenu() {
+          var grid = $("wzAddGrid");
+          grid.innerHTML = "";
+          Object.keys(BLOCK_LABELS).forEach(function (type) {
+            var b = document.createElement("button");
+            b.type = "button";
+            b.className = "wz-add-btn";
+            b.textContent = "+ " + BLOCK_LABELS[type];
+            b.addEventListener("click", function () {
+              state.blocks.push(newBlock(type));
+              renderBlocks();
+              touch();
+            });
+            grid.appendChild(b);
+          });
+        }
+        function fileField(label, accept, dataFile, multiple) {
+          return '<label class="wz-file-label">' +
+            '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 20h16"/></svg>' +
+            esc(label) +
+            '<input type="file" accept="' + accept + '" data-file="' + dataFile + '"' + (multiple ? " multiple" : "") + ' style="display:none" />' +
+            "</label>";
+        }
+        function blockBody(b) {
+          var h = "";
+          if (b.type === "mots") {
+            h += '<textarea class="wz-textarea" data-k="text" placeholder="Écris ta lettre, tes mots du cœur…" maxlength="4000">' + esc(b.text) + "</textarea>";
+            h += '<div style="margin-top:12px">' + fileField("Ajouter une photo (facultatif)", "image/*", "photo", false) + "</div>";
+            if (b.photo && b.photo.data) {
+              h += '<div class="wz-thumbs"><span class="wz-thumb"><img src="' + b.photo.data + '" alt="Photo jointe à la lettre" /><button type="button" data-remove-photo aria-label="Retirer la photo">×</button></span></div>';
+            } else if (b.photo && b.photo.name) {
+              h += '<p class="wz-file-name">Photo : ' + esc(b.photo.name) + "</p>";
+            }
+          } else if (b.type === "galerie") {
+            h += '<p class="wz-hint-note" style="margin:0 0 10px">Sélectionne plusieurs photos de vos plus beaux moments.</p>';
+            h += fileField("Ajouter des photos", "image/*", "gallery", true);
+            if (b.photos.length) {
+              h += '<div class="wz-thumbs">';
+              b.photos.forEach(function (p, i) {
+                h += '<span class="wz-thumb">' + (p.data ? '<img src="' + p.data + '" alt="Photo de la galerie" />' : "") +
+                     '<button type="button" data-remove-gallery="' + i + '" aria-label="Retirer cette photo">×</button></span>';
+              });
+              h += "</div>";
+            }
+          } else if (b.type === "moments") {
+            b.items.forEach(function (it, i) {
+              h += '<div class="wz-item"><div class="wz-item-head"><span>Moment ' + (i + 1) + '</span>' +
+                   '<button type="button" class="wz-mini-btn danger" data-remove-item="' + i + '">Supprimer</button></div>' +
+                   '<div class="wz-field"><label>Titre du moment</label><input class="wz-input" data-list="items" data-i="' + i + '" data-k="titre" value="' + esc(it.titre) + '" maxlength="80" placeholder="Ex. : Notre première rencontre" /></div>' +
+                   '<div class="wz-field"><label>Date</label><input class="wz-input" type="date" data-list="items" data-i="' + i + '" data-k="date" value="' + esc(it.date) + '" /></div>' +
+                   '<div class="wz-field" style="margin-bottom:2px"><label>Ce qui s\u2019est passé</label><textarea class="wz-textarea" data-list="items" data-i="' + i + '" data-k="texte" maxlength="600" placeholder="Raconte ce moment…">' + esc(it.texte) + "</textarea></div></div>";
+            });
+            h += '<button type="button" class="wz-mini-btn" data-add-item style="margin-top:10px">+ Ajouter un moment</button>';
+          } else if (b.type === "raisons") {
+            h += '<p class="wz-hint-note" style="margin:0 0 10px">Tout ce qui la rend unique, une raison à la fois.</p>';
+            b.items.forEach(function (r, i) {
+              h += '<div class="wz-answer-row"><input class="wz-input" data-arr="items" data-i="' + i + '" value="' + esc(r) + '" maxlength="140" placeholder="Ex. : Ta façon de faire sourire" />' +
+                   '<button type="button" class="wz-mini-btn danger" data-remove-item="' + i + '" aria-label="Supprimer cette raison">×</button></div>';
+            });
+            h += '<button type="button" class="wz-mini-btn" data-add-item>+ Ajouter une raison</button>';
+          } else if (b.type === "compteur") {
+            h += '<div class="wz-field"><label>Sens du compteur</label><select class="wz-select" data-k="mode">' +
+                   '<option value="avant"' + (b.mode === "avant" ? " selected" : "") + '>Compte à rebours — avant le jour J</option>' +
+                   '<option value="depuis"' + (b.mode === "depuis" ? " selected" : "") + '>Compteur — depuis une date</option></select></div>' +
+                 '<div class="wz-field"><label>Titre du compteur</label><input class="wz-input" data-k="titre" value="' + esc(b.titre) + '" maxlength="80" placeholder="Ex. : Une année de plus à célébrer" /></div>' +
+                 '<div class="wz-field" style="margin-bottom:2px"><label>Date</label><input class="wz-input" type="date" data-k="date" value="' + esc(b.date) + '" /></div>';
+          } else if (b.type === "vocal") {
+            h += '<p class="wz-hint-note" style="margin:0 0 10px">Enregistre ta voix avec ton téléphone, puis choisis le fichier audio ici. Tu l\u2019enverras aussi à Andy sur WhatsApp.</p>';
+            h += fileField("Choisir un fichier audio", "audio/*", "audio", false);
+            if (b.audio && b.audio.name) h += '<p class="wz-file-name">Fichier choisi : ' + esc(b.audio.name) + "</p>";
+          } else if (b.type === "question") {
+            h += '<div class="wz-field"><label>La question</label><input class="wz-input" data-k="q" value="' + esc(b.q) + '" maxlength="160" placeholder="Ex. : En quelle année on s\u2019est rencontrés ?" /></div>';
+            h += '<p class="wz-hint-note" style="margin:0 0 8px">4 réponses possibles — coche la bonne réponse.</p>';
+            b.answers.forEach(function (a, i) {
+              h += '<div class="wz-answer-row"><input type="radio" name="corr-' + b.id + '" data-correct="' + i + '"' + (b.correct === i ? " checked" : "") + ' aria-label="Bonne réponse ' + (i + 1) + '" />' +
+                   '<input class="wz-input" data-arr="answers" data-i="' + i + '" value="' + esc(a) + '" maxlength="60" placeholder="Réponse ' + (i + 1) + '" /></div>';
+            });
+          } else if (b.type === "musique") {
+            h += '<div class="wz-field" style="margin-bottom:2px"><label>Lien de la musique (YouTube, Spotify…)</label><input class="wz-input" type="url" data-k="url" value="' + esc(b.url) + '" placeholder="https://…" /></div>';
+          } else if (b.type === "finale") {
+            h += '<div class="wz-field"><label>Message final</label><textarea class="wz-textarea" data-k="message" maxlength="1200" placeholder="Le dernier mot, celui qui reste…">' + esc(b.message) + "</textarea></div>" +
+                 '<div class="wz-field" style="margin-bottom:2px"><label>Signature</label><input class="wz-input" data-k="signature" value="' + esc(b.signature) + '" maxlength="60" placeholder="Ex. : Ton amour, pour toujours" /></div>';
+          }
+          return h;
+        }
+        function renderBlocks() {
+          wzBlocks.innerHTML = "";
+          state.blocks.forEach(function (b) {
+            var card = document.createElement("div");
+            card.className = "wz-block";
+            card.setAttribute("data-bid", b.id);
+            card.innerHTML =
+              '<div class="wz-block-head"><b>' + esc(BLOCK_LABELS[b.type]) + "</b>" +
+              '<button type="button" class="wz-mini-btn danger" data-remove-block>Retirer</button></div>' +
+              blockBody(b);
+            wzBlocks.appendChild(card);
+          });
+        }
+        function findBlock(el) {
+          var card = el.closest ? el.closest("[data-bid]") : null;
+          if (!card) return null;
+          var id = card.getAttribute("data-bid");
+          for (var i = 0; i < state.blocks.length; i++) if (state.blocks[i].id === id) return state.blocks[i];
+          return null;
+        }
+        function fieldChanged(e) {
+          var el = e.target;
+          var b = findBlock(el);
+          if (!b) return;
+          if (el.hasAttribute("data-correct")) { b.correct = parseInt(el.getAttribute("data-correct"), 10) || 0; touch(); return; }
+          var k = el.getAttribute("data-k"), list = el.getAttribute("data-list"), arr = el.getAttribute("data-arr");
+          if (list) {
+            var it = b[list][parseInt(el.getAttribute("data-i"), 10)];
+            if (it) it[el.getAttribute("data-k")] = el.value;
+          } else if (arr) {
+            b[arr][parseInt(el.getAttribute("data-i"), 10)] = el.value;
+          } else if (k) {
+            b[k] = el.value;
+          } else { return; }
+          touch();
+        }
+        wzBlocks.addEventListener("input", fieldChanged);
+        wzBlocks.addEventListener("change", function (e) {
+          var el = e.target;
+          if (el.hasAttribute("data-file")) { handleFile(el); return; }
+          fieldChanged(e);
+        });
+        wzBlocks.addEventListener("click", function (e) {
+          var el = e.target;
+          var b = findBlock(el);
+          if (!b) return;
+          if (el.hasAttribute("data-remove-block")) {
+            state.blocks = state.blocks.filter(function (x) { return x.id !== b.id; });
+            renderBlocks(); touch(); return;
+          }
+          if (el.hasAttribute("data-add-item")) {
+            if (b.type === "moments") b.items.push({ titre: "", date: "", texte: "" });
+            else if (b.type === "raisons") b.items.push("");
+            renderBlocks(); touch(); return;
+          }
+          if (el.hasAttribute("data-remove-item")) {
+            b.items.splice(parseInt(el.getAttribute("data-remove-item"), 10), 1);
+            renderBlocks(); touch(); return;
+          }
+          if (el.hasAttribute("data-remove-photo")) {
+            b.photo = null; renderBlocks(); touch(); return;
+          }
+          if (el.hasAttribute("data-remove-gallery")) {
+            b.photos.splice(parseInt(el.getAttribute("data-remove-gallery"), 10), 1);
+            renderBlocks(); touch(); return;
+          }
+        });
+
+        /* ---------- Fichiers : lecture locale + compression douce ---------- */
+        function fileToDataURL(file, cb) {
+          function raw() {
+            var r = new FileReader();
+            r.onload = function () { cb(r.result); };
+            r.onerror = function () { cb(null); };
+            r.readAsDataURL(file);
+          }
+          if (!/^image\//.test(file.type)) { raw(); return; }
+          var url;
+          try { url = URL.createObjectURL(file); } catch (e) { raw(); return; }
+          var img = new Image();
+          img.onload = function () {
+            try {
+              var max = 1000, w = img.naturalWidth || 1, h = img.naturalHeight || 1;
+              var sc = Math.min(1, max / Math.max(w, h));
+              var c = document.createElement("canvas");
+              c.width = Math.max(1, Math.round(w * sc));
+              c.height = Math.max(1, Math.round(h * sc));
+              c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
+              URL.revokeObjectURL(url);
+              cb(c.toDataURL("image/jpeg", 0.82));
+            } catch (err) { URL.revokeObjectURL(url); raw(); }
+          };
+          img.onerror = function () { URL.revokeObjectURL(url); raw(); };
+          img.src = url;
+        }
+        function handleFile(input) {
+          var b = findBlock(input);
+          if (!b || !input.files || !input.files.length) return;
+          var kind = input.getAttribute("data-file");
+          if (kind === "audio") {
+            b.audio = { name: input.files[0].name };
+            renderBlocks(); touch(); return;
+          }
+          if (kind === "photo") {
+            var f = input.files[0];
+            fileToDataURL(f, function (data) {
+              b.photo = { name: f.name, data: data };
+              renderBlocks(); touch();
+            });
+            return;
+          }
+          if (kind === "gallery") {
+            var files = Array.prototype.slice.call(input.files);
+            var pending = files.length;
+            files.forEach(function (f) {
+              fileToDataURL(f, function (data) {
+                if (data) b.photos.push({ name: f.name, data: data });
+                pending--;
+                if (pending === 0) { renderBlocks(); touch(); }
+              });
+            });
+          }
+        }
+
+        /* ---------- Étape 4 : ouverture ---------- */
+        function syncOpeningUI() {
+          var o = state.opening;
+          Array.prototype.forEach.call(document.querySelectorAll("[data-prot]"), function (btn) {
+            btn.setAttribute("aria-pressed", btn.getAttribute("data-prot") === o.protection ? "true" : "false");
+          });
+          Array.prototype.forEach.call(document.querySelectorAll("[data-avail]"), function (btn) {
+            btn.setAttribute("aria-pressed", btn.getAttribute("data-avail") === o.avail ? "true" : "false");
+          });
+          $("secretWrap").hidden = o.protection !== "secret";
+          $("availWrap").hidden = o.avail !== "date";
+          $("fSecret").value = o.secret;
+          $("fAvailDate").value = o.date;
+          $("fAvailTime").value = o.time;
+        }
+        Array.prototype.forEach.call(document.querySelectorAll("[data-prot]"), function (btn) {
+          btn.addEventListener("click", function () {
+            state.opening.protection = btn.getAttribute("data-prot");
+            syncOpeningUI(); touch();
+          });
+        });
+        Array.prototype.forEach.call(document.querySelectorAll("[data-avail]"), function (btn) {
+          btn.addEventListener("click", function () {
+            state.opening.avail = btn.getAttribute("data-avail");
+            syncOpeningUI(); touch();
+          });
+        });
+        $("fSecret").addEventListener("input", function () { state.opening.secret = this.value; touch(); });
+        ["change", "input"].forEach(function (ev) {
+          $("fAvailDate").addEventListener(ev, function () { state.opening.date = this.value; touch(); });
+          $("fAvailTime").addEventListener(ev, function () { state.opening.time = this.value; touch(); });
+        });
+
+        /* ---------- Résumés (aperçu + brief WhatsApp) ---------- */
+        function blockLines(b, full) {
+          var L = [];
+          if (b.type === "mots") {
+            if (b.text.trim()) L.push("Tes mots : « " + cut(b.text, full ? 500 : 160) + " »");
+            if (b.photo && b.photo.name) L.push("Photo jointe à la lettre : " + b.photo.name + " (à envoyer ici sur WhatsApp)");
+            if (!L.length) L.push("Tes mots : (à compléter)");
+          } else if (b.type === "galerie") {
+            L.push("Galerie de photos : " + b.photos.length + " photo(s)" + (b.photos.length ? " — " + b.photos.map(function (p) { return p.name; }).join(", ") + " (à envoyer ici sur WhatsApp)" : ""));
+          } else if (b.type === "moments") {
+            var filled = b.items.filter(function (it) { return it.titre || it.texte || it.date; });
+            if (!filled.length) L.push("Moments importants : (à compléter)");
+            filled.forEach(function (it) {
+              L.push("Moment : " + (it.titre || "Sans titre") + (it.date ? " (" + it.date + ")" : "") + (it.texte ? " — " + cut(it.texte, full ? 240 : 110) : ""));
+            });
+          } else if (b.type === "raisons") {
+            var rs = b.items.filter(function (r) { return r.trim(); });
+            if (!rs.length) L.push("Les petites raisons : (à compléter)");
+            else L.push("Les petites raisons : " + rs.map(function (r) { return "« " + cut(r, 120) + " »"; }).join(" · "));
+          } else if (b.type === "compteur") {
+            L.push("Compteur : " + (b.mode === "avant" ? "compte à rebours vers une date" : "compteur depuis une date") + (b.titre ? " — « " + b.titre + " »" : "") + (b.date ? " — " + b.date : " (date à préciser)"));
+          } else if (b.type === "vocal") {
+            L.push("Note vocale : " + (b.audio && b.audio.name ? "fichier « " + b.audio.name + " » (à envoyer ici sur WhatsApp)" : "(fichier à envoyer ici sur WhatsApp)"));
+          } else if (b.type === "question") {
+            if (b.q.trim()) {
+              L.push("Question surprise : « " + cut(b.q, 160) + " »");
+              var ans = b.answers.map(function (a, i) { return (i + 1) + ") " + (a || "…") + (i === b.correct ? " ✓ bonne réponse" : ""); });
+              L.push("Réponses : " + ans.join(" · "));
+            } else L.push("Question surprise : (à compléter)");
+          } else if (b.type === "musique") {
+            L.push("Musique d\u2019ambiance : " + (b.url.trim() ? b.url.trim() : "(lien à préciser)"));
+          } else if (b.type === "finale") {
+            if (b.message.trim()) L.push("Grande finale : « " + cut(b.message, full ? 400 : 160) + " »");
+            if (b.signature.trim()) L.push("Signature : " + b.signature.trim());
+            if (!L.length) L.push("Grande finale : (à compléter)");
+          }
+          return L;
+        }
+        function openingLines() {
+          var o = state.opening, L = [];
+          L.push("Protection : " + (o.protection === "secret" ? "Mot secret" + (o.secret.trim() ? " — « " + o.secret.trim() + " »" : " (mot à préciser)") : "Sans secret — le cadeau s\u2019ouvre directement"));
+          L.push("Disponibilité : " + (o.avail === "date" ? "À partir du " + (o.date || "…") + (o.time ? " à " + o.time : "") : "Ouvrable maintenant"));
+          return L;
+        }
+        function renderRecap() {
+          var s = state.style;
+          var rows = [];
+          rows.push(["Thème", THEMES[state.theme].name]);
+          var plan0 = PLANS[state.plan] || PLANS.interactif;
+          rows.push(["Formule", plan0.name + " — " + plan0.price]);
+          rows.push(["Titre", s.title || "—"]);
+          if (s.message.trim()) rows.push(["Message", s.message]);
+          if (s.hint.trim()) rows.push(["Indication", s.hint]);
+          rows.push(["Couleurs", "Fond " + s.fond + " · Accent " + s.a1 + " · Accent 2 " + s.a2]);
+          rows.push(["Police", (FONTS[s.font] || FONTS.fraunces).label]);
+          rows.push(["Langue", s.lang === "ht" ? "Kréyòl" : "Français"]);
+          var hist = [];
+          state.blocks.forEach(function (b) { blockLines(b, false).forEach(function (l) { hist.push(l); }); });
+          rows.push(["Histoire", hist.length ? "<ul><li>" + hist.map(esc).join("</li><li>") + "</li></ul>" : "Aucune section pour le moment"]);
+          rows.push(["Ouverture", openingLines().map(esc).join("<br />")]);
+          $("wzRecap").innerHTML = rows.map(function (r) {
+            return '<div class="wz-recap-row"><dt>' + esc(r[0]) + "</dt><dd>" + r[1] + "</dd></div>";
+          }).join("");
+        }
+        function buildBrief() {
+          var s = state.style, L = [];
+          L.push("🎁 NOUVEAU CADEAU SWIFTT — créé avec le Créateur de cadeau");
+          L.push("");
+          L.push("Thème : " + THEMES[state.theme].name);
+          L.push("Langue du cadeau : " + (s.lang === "ht" ? "Kréyòl" : "Français"));
+          L.push("");
+          L.push("— STYLE —");
+          if (s.title.trim()) L.push("Titre de la première page : " + s.title.trim());
+          if (s.message.trim()) L.push("Petit message : " + s.message.trim());
+          if (s.hint.trim()) L.push("Indication sous l\u2019enveloppe : " + s.hint.trim());
+          L.push("Couleurs : fond " + s.fond + " · accent principal " + s.a1 + " · accent secondaire " + s.a2);
+          L.push("Police du titre : " + (FONTS[s.font] || FONTS.fraunces).label);
+          L.push("");
+          L.push("— HISTOIRE —");
+          var anyBlock = false;
+          state.blocks.forEach(function (b) {
+            blockLines(b, true).forEach(function (l) { L.push("• " + l); anyBlock = true; });
+          });
+          if (!anyBlock) L.push("• (aucune section ajoutée)");
+          L.push("");
+          L.push("— OUVERTURE —");
+          openingLines().forEach(function (l) { L.push(l); });
+          L.push("");
+          L.push("— FORMULE & PAIEMENT —");
+          var plan = PLANS[state.plan] || PLANS.interactif;
+          L.push("Formule choisie : " + plan.name + " — " + plan.price.replace(" G", " GDS"));
+          L.push("Paiement : je paie via MonCash ou Binance, et je joins ma preuve de paiement (capture d'écran) à ce message.");
+          L.push("");
+          L.push("Merci Andy ! Je finalise ma commande avec toi ici sur WhatsApp.");
+          var msg = L.join("\n");
+          if (msg.length > 1900) {
+            msg = msg.slice(0, 1850).trim() + "…\n(suite à préciser ensemble ici)";
+          }
+          return msg;
+        }
+        function renderFinalLink() {
+          syncPlanUI();
+          $("wzPayAmount").textContent = (PLANS[state.plan] || PLANS.interactif).price;
+          $("wzWaBtn").href = WA_BASE + "?text=" + encodeURIComponent(buildBrief());
+          $("wzFinalIntro").textContent = "Ta création est prête : « " + (state.style.title || THEMES[state.theme].title) + " », thème " + THEMES[state.theme].name + ". La dernière étape se fait en personne, avec Andy, sur WhatsApp.";
+        }
+
+        /* ---------- Validation obligatoire des étapes ---------- */
+        function blockHasContent(b) {
+          if (b.type === "mots") return b.text.trim().length > 0 || !!(b.photo && (b.photo.data || b.photo.name));
+          if (b.type === "galerie") return b.photos.length > 0;
+          if (b.type === "moments") return b.items.some(function (it) { return (it.titre && it.titre.trim()) || (it.texte && it.texte.trim()) || !!it.date; });
+          if (b.type === "raisons") return b.items.some(function (r) { return String(r).trim().length > 0; });
+          if (b.type === "finale") return b.message.trim().length > 0 || b.signature.trim().length > 0;
+          return false;
+        }
+        function isStepValid(n) {
+          if (n === 1) return state.themePicked === true;
+          if (n === 2) return state.style.title.trim().length > 0;
+          if (n === 3) return state.blocks.some(blockHasContent);
+          if (n === 4) {
+            var o = state.opening;
+            if (o.protection === "secret" && !o.secret.trim()) return false;
+            if (o.avail === "date" && (!o.date || !o.time)) return false;
+            return true;
+          }
+          return true;
+        }
+        function showErr(id, show) {
+          var el = document.getElementById(id);
+          if (el) el.hidden = !show;
+        }
+        function refreshValidation() {
+          var o = state.opening;
+          var titleEmpty = !state.style.title.trim();
+          var secretEmpty = o.protection === "secret" && !o.secret.trim();
+          showErr("errTheme", step === 1 && !isStepValid(1));
+          showErr("errTitle", step === 2 && titleEmpty);
+          fTitle.classList.toggle("err", step === 2 && titleEmpty);
+          showErr("errStory", step === 3 && !isStepValid(3));
+          showErr("errSecret", step === 4 && secretEmpty);
+          $("fSecret").classList.toggle("err", step === 4 && secretEmpty);
+          showErr("errDate", step === 4 && o.avail === "date" && !o.date);
+          showErr("errTime", step === 4 && o.avail === "date" && !o.time);
+          $("wzNext").disabled = step < 6 && !isStepValid(step);
+        }
+
+        /* ---------- Étape 6 : choix de la formule ---------- */
+        function syncPlanUI() {
+          Array.prototype.forEach.call(document.querySelectorAll("[data-plan]"), function (btn) {
+            btn.setAttribute("aria-pressed", btn.getAttribute("data-plan") === state.plan ? "true" : "false");
+          });
+        }
+        Array.prototype.forEach.call(document.querySelectorAll("[data-plan]"), function (btn) {
+          btn.addEventListener("click", function () {
+            state.plan = btn.getAttribute("data-plan");
+            syncPlanUI(); touch();
+          });
+        });
+
+        /* ---------- Navigation ---------- */
+        var STEP_NAMES = ["Thème", "Style", "Histoire", "L\u2019ouverture", "Aperçu", "Finaliser"];
+        function buildProgress() {
+          var bar = $("wzProgress");
+          bar.innerHTML = "";
+          for (var i = 1; i <= 6; i++) {
+            if (i > 1) {
+              var seg = document.createElement("span");
+              seg.className = "wz-bar" + (i <= step ? " done" : "");
+              bar.appendChild(seg);
+            }
+            var d = document.createElement("span");
+            d.className = "wz-dot" + (i < step ? " done" : i === step ? " now" : "");
+            d.innerHTML = i < step
+              ? '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>'
+              : String(i);
+            bar.appendChild(d);
+          }
+        }
+        function goTo(n) {
+          step = Math.max(1, Math.min(6, n));
+          Array.prototype.forEach.call(document.querySelectorAll(".wz-step"), function (p) {
+            p.classList.toggle("on", parseInt(p.getAttribute("data-step"), 10) === step);
+          });
+          $("wzStepTitle").textContent = "Étape " + step + "/6 — " + STEP_NAMES[step - 1];
+          $("wzPrev").disabled = step === 1;
+          $("wzNext").style.visibility = step === 6 ? "hidden" : "visible";
+          buildProgress();
+          refreshValidation();
+          if (step === 5) renderRecap();
+          if (step === 6) renderFinalLink();
+          wizard.scrollTop = 0;
+        }
+        $("wzPrev").addEventListener("click", function () { goTo(step - 1); });
+        $("wzNext").addEventListener("click", function () {
+          if (!isStepValid(step)) { refreshValidation(); return; }
+          goTo(step + 1);
+        });
+
+        /* ---------- Ouverture / fermeture / brouillon ---------- */
+        function syncAllUI() {
+          applyThemeVars();
+          buildThemeCards();
+          syncStyleInputs();
+          renderBlocks();
+          syncOpeningUI();
+          syncPlanUI();
+          updatePreview();
+        }
+        function sanitizeDraft(d) {
+          var s = freshState(THEMES[d.theme] ? d.theme : "anniversaire");
+          s.themePicked = !!(d.theme && THEMES[d.theme]);
+          if (d.plan && PLANS[d.plan]) s.plan = d.plan;
+          if (d.style) {
+            ["title", "message", "hint", "fond", "a1", "a2", "font", "lang"].forEach(function (k) {
+              if (typeof d.style[k] === "string" && d.style[k]) s.style[k] = d.style[k];
+            });
+          }
+          if (Array.isArray(d.blocks)) {
+            s.blocks = [];
+            d.blocks.forEach(function (raw) {
+              if (!raw || !BLOCK_LABELS[raw.type]) return;
+              var b = newBlock(raw.type);
+              Object.keys(raw).forEach(function (k) { if (k !== "id" && k !== "type") b[k] = raw[k]; });
+              s.blocks.push(b);
+            });
+            if (!s.blocks.length) s.blocks = freshState(s.theme).blocks;
+          }
+          if (d.opening) {
+            ["protection", "secret", "avail", "date", "time"].forEach(function (k) {
+              if (typeof d.opening[k] === "string") s.opening[k] = d.opening[k];
+            });
+          }
+          return s;
+        }
+        function openWizard() {
+          wizard.hidden = false;
+          document.body.style.overflow = "hidden";
+          if (pendingDraft && !draftDecided) {
+            $("wzResumeModal").hidden = false;
+          }
+          syncAllUI();
+          goTo(1);
+          var close = $("wzClose");
+          if (close && close.focus) close.focus();
+        }
+        function closeWizard() {
+          $("wzCloseModal").hidden = true;
+          $("wzResumeModal").hidden = true;
+          wizard.hidden = true;
+          document.body.style.overflow = "";
+        }
+        Array.prototype.forEach.call(document.querySelectorAll("[data-open-wizard]"), function (btn) {
+          btn.addEventListener("click", openWizard);
+        });
+        $("wzClose").addEventListener("click", function () { $("wzCloseModal").hidden = false; });
+        $("wzStay").addEventListener("click", function () { $("wzCloseModal").hidden = true; });
+        $("wzQuit").addEventListener("click", closeWizard);
+        $("wzResume").addEventListener("click", function () {
+          draftDecided = true;
+          if (pendingDraft) { state = pendingDraft; pendingDraft = null; }
+          $("wzResumeModal").hidden = true;
+          syncAllUI();
+          goTo(1);
+          showSaved("Brouillon repris");
+        });
+        $("wzRestart").addEventListener("click", function () {
+          draftDecided = true;
+          pendingDraft = null;
+          store.del(DRAFT_KEY);
+          state = freshState("anniversaire");
+          $("wzResumeModal").hidden = true;
+          syncAllUI();
+          goTo(1);
+          saveDraft();
+        });
+        document.addEventListener("keydown", function (e) {
+          if (wizard.hidden) return;
+          if (e.key === "Escape") {
+            if (!$("wzResumeModal").hidden) { $("wzResumeModal").hidden = true; draftDecided = true; }
+            else if (!$("wzCloseModal").hidden) { $("wzCloseModal").hidden = true; }
+            else { $("wzCloseModal").hidden = false; }
+          }
+        });
+
+        /* ---------- Init ---------- */
+        (function init() {
+          buildAddMenu();
+          var raw = store.get(DRAFT_KEY);
+          if (raw) {
+            try {
+              var parsed = JSON.parse(raw);
+              if (parsed && typeof parsed === "object" && parsed.theme) pendingDraft = sanitizeDraft(parsed);
+            } catch (e) { pendingDraft = null; }
+          }
+          syncAllUI();
+          goTo(1);
+        })();
+      })();
+    </script>
+  </body>
+</html>
