@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://swiftcadeau.netlify.app/sitemap.xml
