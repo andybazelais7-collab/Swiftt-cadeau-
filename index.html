@@ -2460,5 +2460,27 @@
         })();
       })();
     </script>
-  </body>
+  
+  <!-- ===== Message de bienvenue vocal ===== -->
+  <audio id="swifttWelcomeAudio" src="assets/bienvenue.mp3" preload="auto"></audio>
+  <button id="swifttWelcomeBtn" type="button" aria-label="Écouter le message de bienvenue" title="Écouter le message de bienvenue" style="position:fixed;right:18px;bottom:18px;z-index:90;width:58px;height:58px;border:none;border-radius:50%;background:linear-gradient(135deg,#f06292,#ad1457);color:#fff;font-size:26px;line-height:1;cursor:pointer;box-shadow:0 6px 20px rgba(173,20,87,.45);display:flex;align-items:center;justify-content:center;animation:swifttPulse 2s infinite;">🔊</button>
+  <style>
+    @keyframes swifttPulse { 0%{box-shadow:0 6px 20px rgba(173,20,87,.45),0 0 0 0 rgba(240,98,146,.55);} 70%{box-shadow:0 6px 20px rgba(173,20,87,.45),0 0 0 16px rgba(240,98,146,0);} 100%{box-shadow:0 6px 20px rgba(173,20,87,.45),0 0 0 0 rgba(240,98,146,0);} }
+  </style>
+  <script>
+    (function () {
+      var audio = document.getElementById('swifttWelcomeAudio');
+      var btn = document.getElementById('swifttWelcomeBtn');
+      var started = false;
+      function setIcon() { btn.textContent = audio.paused ? '🔊' : '⏸'; if (!audio.paused) { btn.style.animation = 'none'; } }
+      function tryPlay() { var p = audio.play(); if (p && p.catch) { p.catch(function () {}); } }
+      audio.addEventListener('play', function () { started = true; setIcon(); });
+      audio.addEventListener('pause', setIcon);
+      audio.addEventListener('ended', setIcon);
+      btn.addEventListener('click', function (e) { e.stopPropagation(); if (audio.paused) { tryPlay(); } else { audio.pause(); } });
+      tryPlay();
+      document.addEventListener('pointerdown', function () { if (!started) { tryPlay(); } }, { once: true });
+    })();
+  </script>
+</body>
 </html>
